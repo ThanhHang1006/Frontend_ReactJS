@@ -51,7 +51,7 @@ export default function Product(props) {
         notification.close("notifysuccess");
       }}
     >
-      Go now
+      Mua ngay
     </Button>
   );
 
@@ -76,9 +76,9 @@ export default function Product(props) {
         let newQuanity = objDataOut[index].quanity + quanity;
         if (newQuanity > option[1]) {
           message.warning(
-            "This product only has  " +
+            "Sản phẩm này chỉ có " +
               option[1] +
-              ", Please select check again"
+              ", Vui lòng chọn kiểm tra lại"
           );
           setbuttonLoading(false);
           return;
@@ -100,8 +100,8 @@ export default function Product(props) {
       setbuttonLoading(false);
       updateCartCurrent(dispatch);
       notification["success"]({
-        message: "Add to cart successfully !",
-        description: "Would you like to go to cart now ?",
+        message: "Thêm vào giỏ hàng thành công !",
+        description: "Bạn có muốn đi đến giỏ hàng bây giờ không ?",
         btn,
         key: "notifysuccess",
       });
@@ -119,10 +119,10 @@ export default function Product(props) {
       return (
         <div style={{ display: "flex", flexDirection: "column" }}>
           <span style={{ fontSize: 16, textDecorationLine: "line-through" }}>
-            {getPriceVND(price) + "$"}
+            {getPriceVND(price) + "VNĐ"}
           </span>
           <span style={{ fontSize: 16, color: "red", fontWeight: "bold" }}>
-            {getPriceVND(promotional) + "$"}
+            {getPriceVND(promotional) + "VNĐ"}
           </span>
         </div>
       );
@@ -168,15 +168,16 @@ export default function Product(props) {
   const handleOrder = () => {
     setbuttonLoading(true);
     setTimeout(() => {
-      if (option == null) {
-        message.warning("Please select size and color to order !");
-        setbuttonLoading(false);
-      } else if (quanity === null) {
-        message.warning("Please select quantity !");
+      // if (option == null) {
+      //   message.warning("Vui lòng chọn size và màu sắc để đặt hàng!");
+      //   setbuttonLoading(false);
+      // } else 
+      if (quanity === null) {
+        message.warning("Vui lòng chọn số lượng !");
         setbuttonLoading(false);
       } else if (option[1] < quanity) {
         message.warning(
-          "This model only has  " + option[1] + " product, Please sympathize!"
+          "Mẫu này chỉ có  " + option[1] + "sản phẩm, xin vui lòng thông cảm!"
         );
         setbuttonLoading(false);
       } else {
@@ -224,22 +225,22 @@ export default function Product(props) {
       </Button>
       <Modal
         className="modal_add_to_cart"
-        title="Add to Cart"
+        title="Thêm giỏ hàng"
         open={isModalVisible}
         onOk={handleOrder}
         onCancel={handleCancel}
         loading={buttonLoading}
         footer={[
           <Button style={{ width: 100, fontWeight: 600 }} key="back" onClick={handleCancel}>
-            Cancel
+           Hủy
           </Button>,
           <Button
-            style={{ width: 100, fontWeight: 600 }}
+            style={{ width: 150, fontWeight: 600 }}
             key="submit"
             type="primary"
             onClick={handleOrder}
           >
-            Add to Cart
+            Thêm vào giỏ hàng
           </Button>,
         ]}
       >
@@ -257,23 +258,23 @@ export default function Product(props) {
                     marginRight: 10,
                   }}
                 >
-                  {getPriceVND(promotional) + "$"}
+                  {getPriceVND(promotional) + "VNĐ"}
                 </span>
                 <span
                   style={{ fontSize: 15, textDecorationLine: "line-through" }}
                 >
-                  {getPriceVND(price) + "$"}
+                  {getPriceVND(price) + "VNĐ"}
                 </span>
               </div>
             ) : (
-              <span style={{ fontSize: 15 }}>{getPriceVND(price) + "$"}</span>
+              <span style={{ fontSize: 15 }}>{getPriceVND(price) + "VNĐ"}</span>
             )}
 
             <div style={{ marginTop: 10 }}>
-              <span style={{ fontWeight: 600 }}>Size/Color : </span>
+              <span style={{ fontWeight: 600 }}>Kích cỡ, màu sắc : </span>
               <Select
                 style={{ width: 150 }}
-                placeholder="Choose size, color"
+                placeholder="Chọn kích cỡ, màu sắc"
                 onChange={(e) => {
                   console.log(e);
                   var arr = [];
@@ -287,7 +288,7 @@ export default function Product(props) {
             </div>
             <div style={{ marginTop: 10 }}>
               <span style={{ fontWeight: 600, marginRight: 10 }}>
-                Quantity :{" "}
+                Số lượng :{" "}
               </span>
               <InputNumber
                 min={1}

@@ -96,10 +96,10 @@ export default function Admin(){
         }
     }
     const handleLogout = ()=>{
-        message.loading({ content: 'Logging out...', key });
+        message.loading({ content: 'Đang đăng xuất', key });
         setTimeout(()=>{
             localStorage.removeItem("token_admin");
-            message.success({ content: 'Logout successfully!', key, duration: 2 });
+            message.success({ content: 'Đăng xuất thành công!', key, duration: 2 });
             history.push('/loginadmin');
         },1000)
     }
@@ -120,60 +120,60 @@ export default function Admin(){
             >
                 <Menu.Item key="/admin/home" icon={<BarChartOutlined />}>
                     <NavLink to="/admin/home">
-                        Overview
+                        Tổng quan
                     </NavLink>
                 </Menu.Item>
-                <SubMenu key="sub1" icon={<DropboxOutlined />} title="Product">
+                <SubMenu key="sub1" icon={<DropboxOutlined />} title="Quản lý sản phẩm">
                     <Menu.Item key="/admin/addproduct">
                         <NavLink to="/admin/addproduct">
-                            Add Product
+                            Thêm sản phẩm
                         </NavLink>
                     </Menu.Item>
                     <Menu.Item key="/admin/manageProduct">
                         <NavLink to="/admin/manageProduct">
-                            Products
+                            Sản phẩm
                         </NavLink>
                     </Menu.Item>
                 </SubMenu>
-                <SubMenu key="sub2" icon={<DatabaseOutlined/>} title="Category">
+                <SubMenu key="sub2" icon={<DatabaseOutlined/>} title="Danh mục sản phẩm">
                     <Menu.Item key="/admin/category">
                         <NavLink to="/admin/category"> 
-                            Category
+                            Danh mục sản phẩm
                         </NavLink>
                     </Menu.Item>    
                     <Menu.Item key="/admin/producttype">
                         <NavLink to="/admin/producttype">
-                            Product type
+                            Loại sản phẩm
                         </NavLink>
                     </Menu.Item> 
                 </SubMenu>
                 <Menu.Item key="/admin/invoices" icon={<ContainerOutlined />}>
                     <NavLink to="/admin/invoices">
-                        Invoices
+                        Quản lý hóa đơn
                     </NavLink>
                 </Menu.Item>
                 <Menu.Item key={currentMenuKeyInventory("/admin/inventory")} icon={<ShopOutlined />}>
                     <NavLink to="/admin/inventory">
-                        Inventory
+                        Kho hàng
                     </NavLink>    
                 </Menu.Item>
                 <Menu.Item key="/admin/account" icon={<UserOutlined />}>
                     <NavLink to="/admin/account">
-                        Account
+                        Quản lý tài khoản
                     </NavLink>    
                 </Menu.Item>
                 <Menu.Item key="/admin/sale" icon={<GiftOutlined />}>
                     <NavLink to="/admin/sale">
-                        Sales event
+                        Sự kiện khuyến mãi
                     </NavLink>    
                 </Menu.Item>
                 <Menu.Item key="/admin/review" icon={<StarOutlined />}>
                     <NavLink to="/admin/review">
-                        Product review
+                        Đánh giá
                     </NavLink>    
                 </Menu.Item>
                 <Menu.Item icon={<PoweroffOutlined />} onClick={handleLogout}>
-                    Logout
+                    Đăng xuất
                 </Menu.Item>
             </Menu>
         )
@@ -231,7 +231,7 @@ export default function Admin(){
             <Sider trigger={null} collapsible collapsed={collapsed} collapsedWidth={widthColl}>
                 <div className="logo" style={{ alignItems:'center',display:'flex',paddingTop:20,flexDirection:'column' }}>
                     <Image src={logo} width={80} preview={false}/>   
-                    <span style={{ color:'gray',fontWeight:'bold' }}>Fashion HQ</span> 
+                    <span style={{ color:'gray',fontWeight:'bold' }}>TrungAnh Shop</span> 
                     <TimerCount />
                 </div>
                 <NavMenu/>
@@ -244,7 +244,7 @@ export default function Admin(){
                 : 
                 <MenuFoldOutlined  onClick={()=>setcollapsed(!collapsed)}/>
                 }
-                <span style={{ paddingLeft:20 }}>Fashion HQ</span>
+                <span style={{ paddingLeft:20 }}>TrungAnh Shop</span>
             
                </Header>
                <Content  

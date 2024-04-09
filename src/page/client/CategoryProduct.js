@@ -44,7 +44,7 @@ export default function CategoryProduct(){
     const Direction = ()=>(
         <Breadcrumb style={{ fontSize:18,paddingBottom:20 }}>
             <Breadcrumb.Item>
-                <Link to={"/home"}>Home</Link>
+                <Link to={"/home"}>Trang chủ</Link>
             </Breadcrumb.Item>
             <Breadcrumb.Item>
                {nameCategory}
@@ -69,7 +69,7 @@ export default function CategoryProduct(){
                         </div>
                     </div>
                 {empty ?
-                    <Empty className="empty" description="No products available"  />
+                    <Empty className="empty" description="Không có sản phẩm nào"  />
                     :
                     <div>
                         <Row  gutter={ [{ xs: 160, sm: 16, md: 24, lg: 50 },12]} >

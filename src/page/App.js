@@ -103,11 +103,11 @@ export default function App() {
       setstatusUser(true);
       const status = await getUser(token, dispatch);
       if (status === false) {
-        message.warning("Login session expired, please log in again !");
+        message.warning("Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại !");
         setstatusUser(false);
       } else if (status == "block") {
         message.error(
-          "Your account is locked, please contact the administrator !"
+          "Tài khoản của bạn đã bị khóa, vui lòng liên hệ với quản trị viên !"
         );
         setstatusUser(false);
       } else {
@@ -180,10 +180,10 @@ export default function App() {
         />
         <span className="title">
           <span className="title-logo" style={{ fontSize: 20 }}>
-            Fashion HQ
+            TrungAnh Shop
           </span>
           <span className="title-logo" style={{ fontSize: 17 }}>
-            Just Beautiful Be Your Style
+          Đẹp theo phong cách của bạn
           </span>
         </span>
       </Col>
@@ -196,7 +196,7 @@ export default function App() {
       >
         <Search
           className="input-search"
-          placeholder="Enter product name ..."
+          placeholder="Nhập tên sản phẩm ..."
           enterButton
           onSearch={onSearch}
         />
@@ -209,8 +209,8 @@ export default function App() {
             onClick={() => setshowModalAccount(true)}
           >
             <FaUser />
-            <span className="title" style={{ paddingLeft: 5 }}>
-              Login
+            <span className="title" style={{ paddingLeft: 0 }}>
+              Đăng nhập
             </span>
           </div>
         ) : (
@@ -230,7 +230,7 @@ export default function App() {
             >
               <FaUser />
               <span className="title" style={{ paddingLeft: 5 }}>
-                Account
+                Tài khoản 
               </span>
             </div>
           </Dropdown>
@@ -267,7 +267,7 @@ export default function App() {
                     cursor: "pointer",
                   }}
                 >
-                  Cart
+                  Giỏ hàng
                 </span>
             </Badge>
           </Dropdown>
@@ -297,27 +297,27 @@ export default function App() {
         defaultSelectedKeys={["1"]}
       >
         <Menu.Item key="1">
-          Home <Link to={"/home"} />
+          Trang chủ <Link to={"/home"} />
         </Menu.Item>
-        <SubMenu key="2" title="Product">
+        <SubMenu key="2" title="Sản phẩm">
           {menu}
         </SubMenu>
         <Menu.Item key="3">
-          <Link to="/intro">Introduction</Link>
+          <Link to="/intro">Giới thiệu</Link>
         </Menu.Item>
         <Menu.Item key="4">
-          <Link to="/productsale/1">Promotional products</Link>
+          <Link to="/productsale/1">Sản phẩm khuyến mại</Link>
         </Menu.Item>
         <Menu.Item key="5">
-          <Link to="/fullproduct/1">Shop</Link>
+          <Link to="/fullproduct/1">Cửa hàng</Link>
         </Menu.Item>
         <Menu.Item key="6">
           <Link to={"/policy"} />
-          Policy
+          Chính sách
         </Menu.Item>
         <Menu.Item key="7">
           <Link to={"/contact"} />
-          Contact
+          Liên hệ
         </Menu.Item>
       </Menu>
     </Header>
@@ -409,11 +409,11 @@ export default function App() {
             <div className="topbar">
               <span style={{ color: "white", alignItems: "center" }}>
                 {" "}
-                <EnvironmentOutlined style={{ marginRight: 5 }} /> 115 Do Thuc Tinh, Khue Trung, Cam Le |{" "}
+                <EnvironmentOutlined style={{ marginRight: 5 }} /> Nga ba Thong Nhat - Dien Dương -Dien Ban |{" "}
                 <MailOutlined style={{ marginLeft: 10, marginRight: 5 }} />{" "}
-                Email: fashion@gmail.com.vn |{" "}
+                Email: trunganhshop@gmail.com.vn |{" "}
                 <HistoryOutlined style={{ marginLeft: 10, marginRight: 5 }} />{" "}
-                08:00 - 17:00
+                08:00 - 20:00
               </span>
             </div>
             {Top()}

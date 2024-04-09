@@ -120,16 +120,16 @@ export default function ProductDetails() {
   };
   const handleOption = () => {
     if (option == null) {
-      message.warning("Please select size and color to order !");
+      message.warning("Vui lòng chọn size và màu sắc để đặt hàng !");
       setbuttonLoading(false);
     } else if (quanity === null) {
-      message.warning("Please select quantity !");
+      message.warning("Vui lòng chọn số lượng!");
       setbuttonLoading(false);
     } else if (option[1] < quanity) {
       message.warning(
-        "This model only has  " +
+        "Mẫu này chỉ có  " +
         option[1] +
-        " product, Please sympathize!"
+        " sản phẩm, xin vui lòng thông cảm!"
         );
         setbuttonLoading(false);
       } else {
@@ -158,7 +158,7 @@ export default function ProductDetails() {
         notification.close("notifysuccess");
       }}
     >
-      Go now
+      Mua ngay
     </Button>
   );
   const handleBuyNow = () => {
@@ -179,7 +179,7 @@ export default function ProductDetails() {
       
         if (quanity > option[1]) {
           message.warning(
-            "This product only has  " + option[1] + ", Please select check again"
+            "Sản phẩm này chỉ có " + option[1] + ", sản phẩm, xin vui lòng thông cảm"
           );
           setbuttonLoading(false);
           return;
@@ -217,7 +217,7 @@ export default function ProductDetails() {
         let newQuanity = objDataOut[index].quanity + quanity;
         if (newQuanity > option[1]) {
           message.warning(
-            "This product only has  " + option[1] + ", Please select check again"
+            "Sản phẩm này chỉ có  " + option[1] + ", Vui lòng chọn kiểm tra lại"
           );
           setbuttonLoading(false);
           return;
@@ -239,8 +239,8 @@ export default function ProductDetails() {
       setbuttonLoading(false);
       updateCartCurrent(dispatch);
       notification["success"]({
-        message: "Add to cart successfully !",
-        description: "Would you like to go to cart now ?",
+        message: "Thêm vào giỏ hàng thành công!",
+        description: "Bạn có muốn vào giỏ hàng bây giờ không ?",
         btn,
         key: "notifysuccess",
       });
@@ -303,7 +303,7 @@ export default function ProductDetails() {
           
           { reviewStar > 0 ?
               <>
-              Rate:{" "}
+              Tỷ lệ:{" "}
                 <Rate
                   allowHalf
                   style={{ size: "10px" }}
@@ -311,10 +311,10 @@ export default function ProductDetails() {
                   defaultValue={reviewStar}
                   disabled
                 />{" "}
-                ({quanityReview} review)
+                ({quanityReview} đánh giá)
               </> 
               : <>
-                There are no reviews yet
+                Hiện tại không có đánh giá nào
               </>
           }
         </span>
@@ -354,10 +354,10 @@ export default function ProductDetails() {
             paddingBottom: 20,
           }}
         >
-          <span className="option-children">Option :</span>
+          <span className="option-children">Lựa chọn :</span>
           <div style={{ padding: "0px 10px" }}>
             <Select
-              placeholder="Choose size, color"
+              placeholder="Chọn kích thước, màu sắc"
               onChange={(e) => {
                 console.log(e);
                 var arr = [];
@@ -380,7 +380,7 @@ export default function ProductDetails() {
             paddingBottom: 20,
           }}
         >
-          <span className="option-children">Quantity :</span>
+          <span className="option-children">Tổng số :</span>
           <div style={{ padding: "0px 10px" }}>
             <InputNumber
               style={{ textAlign: "center" }}
@@ -404,7 +404,7 @@ export default function ProductDetails() {
             disabled={outOfStock}
             loading={buttonLoading}
           >
-            <span>ADD CART</span>
+            <span>THÊM GIỎ HÀNG</span>
           </Button>
           <Button 
             className="buy-now" 
@@ -413,33 +413,33 @@ export default function ProductDetails() {
             onClick={handleValidationBuyNow}
           >
             {/* <Link to="/cart"><span>BUY NOW</span></Link> */}
-            <span>BUY NOW</span>
+            <span>MUA NGAY</span>
           </Button>
         </div>
 
         <div className="block-promotion">
           <div className="heading-promo">
             <GiftOutlined style={{ marginRight: 5 }} />
-            Special promotion
+            Khuyến mãi đặc biệt
           </div>
           <div className="promo-content">
             <p></p>
             <p>
-              Special discount program to celebrate Lunar New Year. Applicable
-              from January 12 - February 29
+            Chương trình giảm giá đặc biệt chào mừng Tết Nguyên Đán. Áp dụng
+              từ ngày 12 tháng 1 - ngày 29 tháng 2
             </p>
             <p>
-              + Apply code HAPPYNEWYEAR to get 20 $ off for orders from
-              800 $ !
+            + Nhập mã HAPPYNEWYEAR để được giảm 20$ cho đơn hàng từ
+              80k!
             </p>
-            <p>+ Apply code SHIPTET to save 5 $ on shipping !</p>
+            <p>+Áp dụng mã SHIPTET để tiết kiệm 30K phí vận chuyển !</p>
           </div>
         </div>
 
         <div className="block-promotion">
           <div className="heading-product-infor">
             <InfoCircleOutlined style={{ marginRight: 5 }} />
-            Product Information
+            Thông tin sản phẩm
           </div>
           <div className="promo-content">
             <p></p>
@@ -452,7 +452,7 @@ export default function ProductDetails() {
       </div>
 
       <div className="reviews">
-        <p className="review-title">CUSTOMER REVIEWS</p>
+        <p className="review-title">PHẢN HỒI KHÁCH HÀNG</p>
         {
           arrReview.length > 0 ?
             arrReview.map((review, ind) => {
@@ -483,7 +483,7 @@ export default function ProductDetails() {
                 </div>
               );
             })
-            : "There are no reviews yet"
+            : "Hiện tại không có đánh giá nào"
         }
       </div>
     </div>
@@ -491,7 +491,7 @@ export default function ProductDetails() {
   const Direction = () => (
     <Breadcrumb style={{ fontSize: 18 }}>
       <Breadcrumb.Item>
-        <Link to={"/home"}>Home</Link>
+        <Link to={"/home"}>Trang chủ</Link>
       </Breadcrumb.Item>
       <Breadcrumb.Item>
         <Link to={`/category/${dataProduct.idCategory}`}>{nameCategory}</Link>
@@ -552,7 +552,7 @@ export default function ProductDetails() {
               style={{ justifyContent: "center" }}
             >
               <span style={{ fontSize: 16, fontWeight: "bold" }}>
-                RELATED PRODUCTS
+              NHỮNG SẢM PHẨM TƯƠNG TỰ
               </span>
               <Row>{ItemProductRelate}</Row>
             </Col>

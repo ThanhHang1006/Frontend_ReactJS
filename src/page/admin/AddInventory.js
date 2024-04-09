@@ -46,11 +46,11 @@ export default function AddInventory(){
         const res = await FetchAPI.postDataAPI("/inventory/addInventory",data);
         if(res.msg){
             if(res.msg==="The product exist"){
-                message.warning("This product is in stock, please check back!")
+                message.warning("Sản phẩm này còn hàng, vui lòng kiểm tra lại!")
                 formAdd.setFieldsValue({quanity:1,product:null,option:null})
             }
             if(res.msg==="Success"){
-                message.success("Imported into the inventory successfully, return to the inventory to view !");
+                message.success("Nhập kho thành công, quay lại kho để xem!");
                 formAdd.setFieldsValue({quanity:1,product:null,option:null})
             }
         }
@@ -77,7 +77,7 @@ export default function AddInventory(){
                 style={{ width:'80%'}}
                 hasFeedback
                 rules={[
-                    { required: true, message: 'Please choose a product !' },
+                    { required: true, message: 'Vui lòng chọn sản phẩm !' },
                 ]}
             >
             <Select
@@ -86,23 +86,23 @@ export default function AddInventory(){
                 showSearch
                 allowClear
                 style={{ width: '100%'}}
-                placeholder="Choose a product"
+                placeholder="chọn sản phẩm"
                 onChange={handleChangeProduct}
                 >
                 {dataProduct}
             </Select>
             </Form.Item>
             <Form.Item
-                label="Option"
+                label="Lựa chọn"
                 name="option"
                 hasFeedback
                 rules={[
-                    { required: true, message: 'Please enter type, size, color !' },
+                    { required: true, message: 'Chọn loại, màu sắc, kích cỡ !' },
                 ]}
                 style={{width:'80%'}}
             >
                 <Input
-                    placeholder="Enter type, size, color !"
+                    placeholder="Chọn loại, màu sắc, kích cỡ !"
                     value={option}
                     defaultValue={option}
                     onChange= {(e)=>setoption(e.target.value)}
@@ -111,10 +111,10 @@ export default function AddInventory(){
                 />
             </Form.Item>
             <Form.Item
-                label="Quantity"
+                label="Số lượng"
                 name="quanity"
                 rules={[
-                    { required: true, message: 'Please select quantity !' },
+                    { required: true, message: 'Vui lòng chọn số lượng !' },
                 ]}
                 style={{width:'80%'}}
             >

@@ -80,25 +80,25 @@ export default function Home() {
     setshowContent(false);
     getPromotion();
   }, []);
-  useEffect(() => {
-    setshowContent(false);
-    const fetchData = async () => {
-      try {
-        const new_token = localStorage.getItem("token") || 1;
-        const resp = await FetchAPI.postDataAPI(
-          "/product/getRecommendationProduct",
-          { id: new_token }
-        );
-        setProductRecommendation(resp.data);
-        setToken(new_token);
-      } catch (error) {
-        console.error("Error fetching recommendation data:", error);
-      }
-    };
-    fetchData();
+  // useEffect(() => {
+  //   setshowContent(false);
+  //   const fetchData = async () => {
+  //     try {
+  //       const new_token = localStorage.getItem("token") || 1;
+  //       const resp = await FetchAPI.postDataAPI(
+  //         "/product/getRecommendationProduct",
+  //         { id: new_token }
+  //       );
+  //       setProductRecommendation(resp.data);
+  //       setToken(new_token);
+  //     } catch (error) {
+  //       console.error("Error fetching recommendation data:", error);
+  //     }
+  //   };
+  //   fetchData();
 
-    setshowContent(true);
-  }, [localStorage.getItem("token")]);
+  //   setshowContent(true);
+  // }, [localStorage.getItem("token")]);
 
   useEffect(() => {
     setshowContent(false);
@@ -112,11 +112,11 @@ export default function Home() {
   useEffect(() => {
     const clipboard = new ClipboardJS(".sale-button");
     clipboard.on("success", (e) => {
-      message.success("Copied");
+      message.success("Đã sao chép");
     });
 
     clipboard.on("error", (e) => {
-      message.warning("Copied error");
+      message.warning("Sao chép bị lỗi");
     });
 
     return () => {
@@ -125,18 +125,18 @@ export default function Home() {
   }, []);
 
   const getProductNew = async () => {
-    const res = await FetchAPI.getAPI(`/product/getProductNew/1`);
+    const res = await FetchAPI.getAPI("/product/getProductNew/1");
     setitemProductNew(res.item);
     setshowContent(true);
   };
   const getPromotion = async () => {
-    const res = await FetchAPI.getAPI(`/promotion/getPromotionNews`);
+    const res = await FetchAPI.getAPI("/promotion/getPromotionNews");
     setPromotionList(res);
     setshowContent(true);
   };
   const getProductDeal = async () => {
     let item = itemProductDeal;
-    const res = await FetchAPI.getAPI(`/product/getProductDeal/${pageDeal}`);
+    const res = await FetchAPI.getAPI("/product/getProductDeal/${pageDeal}");
     item = item.concat(res.item);
     if (res.msg === "Out of data") {
       setmoreDeal(false);
@@ -168,8 +168,8 @@ export default function Home() {
                       </span>
                       <span style={{ fontSize: 13 }}>
                         {item.type === 0
-                          ? `Voucher for free shipping ${item.cost_sale} $ for orders`
-                          : `Voucher discount ${item.cost_sale} $ for each order`}
+                          ? "Phiếu miễn phí vận chuyển ${item.cost_sale}$ Cho đơn đặt hàng"
+                          : `Phiếu giảm giá ${item.cost_sale}$ cho đơn đặt hàn`}
                       </span>
                     </div>
                   </div>
@@ -184,18 +184,18 @@ export default function Home() {
                 >
                   <div className="sale-content">
                     <span>
-                      Code:{" "}
+                      Mã:{" "}
                       <span style={{ fontWeight: 600 }}>{item.code_sale}</span>
                     </span>
                     <span>
-                      Expiry: {moment(item.expired).format("YYYY-MM-DD")}
+                      Hết hạn:: {moment(item.expired).format("YYYY-MM-DD")}
                     </span>
                   </div>
                   <Button
                     className="sale-button"
                     data-clipboard-text={item.code_sale}
                   >
-                    Copy
+                    Sao chép
                   </Button>
                 </div>
               </Card>
@@ -216,9 +216,9 @@ export default function Home() {
     >
       <div className="background1">
         <div className="slider1">
-          <div className="title-1">FLASH SALE</div>
-          <div className="title-2">BUY PAIR TO DISCOUNT SET</div>
-          <div className="title-3">Apply to many products</div>
+          <div className="title-1">MUA 1 TẶNG 1</div>
+          <div className="title-2">Miễn phí vận chuyển </div>
+          <div className="title-3">Áp dụng cho nhiều sản phẩm</div>
           <Button
             className="shop-now"
             onClick={() => {
@@ -226,18 +226,18 @@ export default function Home() {
             }}
           >
             <ShoppingCartOutlined />
-            <span>SHOP NOW</span>
+            <span>MUA NGAY</span>
           </Button>
         </div>
       </div>
       <div className="background2">
         <div className="slider1">
-          <div className="title-1">Special offer</div>
-          <div className="title-2">LUNAR NEW YEAR</div>
+          <div className="title-1">BLACK FRIDAY</div>
+          <div className="title-2">HAPPY NEW YEAR</div>
           <div className="title-3">Time: 01/01 - 29/02</div>
           <Button className="shop-now">
             <ShoppingCartOutlined />
-            <span>SHOP NOW</span>
+            <span>MUA NGAY</span>
           </Button>
         </div>
       </div>
@@ -276,7 +276,7 @@ export default function Home() {
           {slide()}
           {sale()}
           <div className="contentHome">
-            <h2 className="title-news">New products</h2>
+            <h2 className="title-news">HÀNG MỚI VỀ</h2>
             <Slider className="slider-item-new" {...settings_carsoule_new}>
               {itemProductNew.map((item, i) => (
                 <div key={i} className="hello">
@@ -286,7 +286,7 @@ export default function Home() {
             </Slider>
             {brand()}
             <h2 className="title-news" style={{ marginTop: 48 }}>
-              Recommendation for you
+            BÁN CHẠY NHẤT
             </h2>
             <Slider
               className="slider-item-new"
@@ -301,7 +301,7 @@ export default function Home() {
             </Slider>
 
             <h2 className="title-news" style={{ marginTop: 40 }}>
-              HOT DEAL PRODUCTS
+                SẢN PHẨM DEAL HOT
             </h2>
             <Row
               gutter={[{ xs: 8, sm: 16, md: 24, lg: 24 }, 20]}
@@ -321,7 +321,7 @@ export default function Home() {
             )}
 
             <h2 className="title-news" style={{ marginTop: 40 }}>
-              CHOOSE FASHION HQ
+             TRUNGANHSHOP
             </h2>
             <Row className="reason-choose">
               <Col className="item" xl={6} md={12} sm={24}>
@@ -330,8 +330,8 @@ export default function Home() {
                     <CompassFilled />
                   </div>
                 </div>
-                <h2>Nationwide Delivery</h2>
-                <span>Extremely fast delivery with lots of support.</span>
+                <h2>Giao hàng toàn quốc</h2>
+                <span>Giao hàng cực nhanh với nhiều hỗ trợ.</span>
               </Col>
               <Col className="item" xl={6} md={12} sm={24}>
                 <div className="image">
@@ -339,10 +339,10 @@ export default function Home() {
                     <FormatPainterFilled />
                   </div>
                 </div>
-                <h2>Diverse Products</h2>
+                <h2>Sản phẩm đa dạng</h2>
                 <span>
-                  Shirts, pants, and accessories of all kinds are always waiting
-                  for you.
+                Áo, quần, phụ kiện các loại luôn chờ đợi
+                  cho bạn.
                 </span>
               </Col>
               <Col className="item" xl={6} md={12} sm={24}>
@@ -351,8 +351,8 @@ export default function Home() {
                     <BulbFilled />
                   </div>
                 </div>
-                <h2>Utilities</h2>
-                <span>You can track your order at all times.</span>
+                <h2>Tiện ích</h2>
+                <span>Bạn có thể theo dõi đơn hàng của mình mọi lúc.</span>
               </Col>
               <Col className="item" xl={6} md={12} sm={24}>
                 <div className="image">
@@ -360,10 +360,10 @@ export default function Home() {
                     <ToolFilled />
                   </div>
                 </div>
-                <h2>Platform diversity</h2>
+                <h2>Đa dạng nền tảng</h2>
                 <span>
-                  We have a website and mobile application so you can easily
-                  connect.
+                  Chúng tôi có trang web và ứng dụng di động để bạn có thể dễ dàng
+                  kết nối.
                 </span>
               </Col>
             </Row>

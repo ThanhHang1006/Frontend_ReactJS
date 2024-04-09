@@ -29,7 +29,7 @@ export const getColumnSearchProps = (dataIndex,searchInput) => ({
             Search
           </Button>
           <Button onClick={() => handleReset(clearFilters)} size="small" style={{ width: 90 }}>
-            Refresh
+            Thử lại
           </Button>
           <Button
             type="link"
@@ -40,7 +40,7 @@ export const getColumnSearchProps = (dataIndex,searchInput) => ({
               state.searchedColumn=dataIndex;
             }}
           >
-            Filter
+            Lọc
           </Button>
         </Space>
       </div>

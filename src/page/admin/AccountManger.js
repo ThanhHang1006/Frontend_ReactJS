@@ -30,16 +30,16 @@ export default function AccountManger(){
         const res = await FetchAPI.postDataAPI("/user/updateStatusUser",data)
         if(res.msg){
             if(res.msg==="Success"){
-                message.success("Update successfully");
+                message.success("Cập nhật thành công");
                 getUser();
             }else{
-                message.error("There's an error !!")
+                message.error("Xảy ra lỗi !!")
             }
         }
     }
     const columns = [
         {
-            title:"Account ID",
+            title:"ID tài khoản",
             key:'id',
             render: record=><span>{record.id}</span>
         },
@@ -49,12 +49,12 @@ export default function AccountManger(){
             ...getColumnSearchProps('email',searchInput)
         },
         {
-            title:"Customer name",
+            title:"Tên khách hàng",
             key:'name',
             render: record=><span>{record.name}</span>
         },
         {
-            title:"Status",
+            title:"Trạng thái ",
             key:"status",
             render: record=>(
                 <Select 
@@ -62,16 +62,16 @@ export default function AccountManger(){
                     onChange= {(e)=>updateStatusUser(e,record.id)}
                 >
                     <Option value={0}>
-                        Activities
+                    Các hoạt động
                     </Option>
                     <Option value={1}>
-                        Temporarily locked
+                    Bị khóa tạm thời
                     </Option>
                 </Select>
             )
         },
         {
-            title:"Details",
+            title:"Chi tiết",
             key:'details',
             render: record=>
             <div style={{ paddingLeft:15 }}>
@@ -102,10 +102,10 @@ export default function AccountManger(){
         />
         {showModalInforAccount &&
             <Modal
-                title={`Customer information ${dataInfor.id}`}
+                title={`Thông tin khách hàng ${dataInfor.id}`}
                 visible={showModalInforAccount}
                 onCancel={()=>setshowModalInforAccount(false)}
-                cancelText="Exit"
+                cancelText="Thoát"
                 okButtonProps={{
                     style: {
                       display: "none",
@@ -122,60 +122,60 @@ export default function AccountManger(){
                         name="email"
                     >
                         <Input 
-                            placeholder="Email customer"
+                            placeholder="Email khách hàng"
                             disabled
                         />
                     </Form.Item>
                     <Form.Item 
-                        label="Login name"
+                        label="Tên đăng nhập"
                         name="username"
                     >
                         <Input 
-                            placeholder="Customer login name"
+                            placeholder="Tên đăng nhập"
                             disabled
                         />
                     </Form.Item>
                     <Form.Item 
-                        label="Customer name"
+                        label="Tên khách hàng"
                         name="name"
                     >
                         <Input 
-                            placeholder="Customer name"
+                            placeholder="Tên khách hàng"
                             disabled
                         />
                     </Form.Item>
                     <Form.Item 
-                        label="Address"
+                        label="Địa chỉ"
                         name="address"
                     >
                         <Input 
-                            placeholder="The customer has not provided this information"
+                            placeholder="Khách hàng chưa cung cấp thông tin này"
                             disabled
                         />
                     </Form.Item>
                     <Form.Item 
-                        label="Phone"
+                        label="Số điện thoại"
                         name="phone"
                     >
                         <Input 
-                            placeholder="The customer has not provided this information"
+                            placeholder="Khách hàng chưa cung cấp thông tin này"
                             disabled
                         />
                     </Form.Item>
                     <Form.Item 
-                        label="Order quantity"
+                        label="Số lượng order"
                         name="totalBill"
                     >
                         <span> {formInfor.getFieldValue(['totalBill'])}</span>
                     </Form.Item>
                     <Form.Item 
-                        label="Status"
+                        label="Trạng thái"
                         name="status"
                     >
                         {formInfor.getFieldValue(['status'])==0?
-                        <span style={{ color:'green',fontWeight:'bold' }}>Activities</span>
+                        <span style={{ color:'green',fontWeight:'bold' }}>Đang hoạt động</span>
                         :
-                        <span style={{ color:'red',fontWeight:'bold' }}>Temporarily locked</span>
+                        <span style={{ color:'red',fontWeight:'bold' }}>Bị khóa tạm thời</span>
                         }
                     </Form.Item>
                 </Form>

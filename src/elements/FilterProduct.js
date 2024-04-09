@@ -23,23 +23,23 @@ export default function FilterProduct (props) {
             selectedKeys={props.currentKey}
         >
           <Menu.Item key="1" icon={<FallOutlined />}>
-          Prices gradually decrease
+          Giá giảm dần
           </Menu.Item>
           <Menu.Item key="2" icon={<RiseOutlined />}>
-          Prices gradually increase
+         Giá tăng dần
           </Menu.Item>
           <Menu.Item key="3" icon={<HistoryOutlined />}>
-          Newest
+          Mới nhất
           </Menu.Item>
           <Menu.Item key="4" icon={<FieldTimeOutlined />}>
-          Latest
+          Cũ hơn
           </Menu.Item>
         </Menu>
     );
     return(
         <Dropdown overlay={menu}>
             <Button>
-            Filter <FilterOutlined />
+            Lọc <FilterOutlined />
             </Button>
         </Dropdown>
     )

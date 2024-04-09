@@ -37,11 +37,11 @@ export default function Invoices(){
             if(res.msg==="Success"){
                 setTimeout(()=>{
                     getFullBill();
-                    message.success("Update invoice #"+id+" successfully !");
+                    message.success("Cập nhật hóa đơn #"+id+" thành công !");
                 },500)
             }else{
                 setTimeout(()=>{
-                    message.error("There's an error !!");
+                    message.error("Xảy ra lỗi !!");
                     setloadingTable(false);
                 },500)
             }
@@ -54,13 +54,13 @@ export default function Invoices(){
         const res = await FetchAPI.postDataAPI("/order/deleteBill",data);
         if(res.msg){
             if(res.msg==="Success"){
-                message.success(`Delete invoice #${dataItemTmp.id} successfully !`);
+                message.success(`Xóa đơn hàng #${dataItemTmp.id} thành công !`);
                 getFullBill();
                 setTimeout(()=>{
                     setloadingTable(false);
                 },200)
             }else{
-                message.error("There's an error !!");
+                message.error("Xảy ra lỗi !!");
                 setTimeout(()=>{
                     setloadingTable(false);
                 },200)
@@ -69,11 +69,11 @@ export default function Invoices(){
     }
     const columns = [
         {
-            title:"Order code",
+            title:"Mã hóa đơn",
             key:'code',
             filters: [
-                { text: 'Order with account', value: "string" },
-                { text: 'Order without account', value: "object" },
+                { text: 'Đặt hàng với tài khoản', value: "string" },
+                { text: 'Đặt hàng không cần tài khoản', value: "object" },
             ],
             onFilter: (value, record) => typeof(record.idUser)===value,
             render: record=>(
@@ -83,12 +83,12 @@ export default function Invoices(){
             )
         },
         {
-            title:"Customer name",
+            title:"Tên khách hàng",
             key:'name',
             ...getColumnSearchProps('name',searchInput)
         },
         {
-            title:"Address",
+            title:"Địa chỉ",
             key:'address',
             render:record=><span>{record.address}</span>
         },
@@ -98,24 +98,24 @@ export default function Invoices(){
             ...getColumnSearchProps('email',searchInput),
         },
         {
-            title:"Phone",
+            title:"Số điện thoại",
             key:'phone',
             render: record=><span>{record.phone}</span>
         },
         {
-            title:"Total",
+            title:"Tổng",
             key:'total',
             sorter: (a, b) => a.total_price - b.total_price,
-            render: record=><span style={{ fontWeight:'bold' }}>{getPriceVND(record.total_price)+" $"}</span>
+            render: record=><span style={{ fontWeight:'bold' }}>{getPriceVND(record.total_price)+" VNĐ"}</span>
         },
         {
-            title:"Status",
+            title:"Trạng thái",
             key:'status',
             filters: [
-                { text: 'Processing', value: 0 },
-                { text: 'Delivering', value: 1 },
-                { text: 'Completed', value: 2 },
-                { text: 'Cancelled', value: 3 },
+                { text: 'Đang xử lý', value: 0 },
+                { text: 'Đang giao hàng', value: 1 },
+                { text: 'Hoàn thành', value: 2 },
+                { text: 'Hủy', value: 3 },
             ],
             onFilter: (value, record) => record.status===value,
             render: record=>{
@@ -126,34 +126,34 @@ export default function Invoices(){
                         onChange={(value)=>hanldeUpdateStatus(value,record.code_order,record.id,record.email)}
                     >
                         <Option value={0}>
-                            <span style={{ color:'red' }}>Processing</span>
+                            <span style={{ color:'gray' }}>Đang xử lý</span>
                         </Option>
                         <Option value={1}>
-                            <span style={{color:'blue' }}>Delivering</span>
+                            <span style={{color:'blue' }}>Đang giao hàng</span>
                         </Option>
                         <Option value={2}>
-                            <span style={{ color:'green' }}>Completed</span>
+                            <span style={{ color:'green' }}>Hoàn thành</span>
                         </Option>
                         <Option value={3} disabled>
-                            <span style={{ color:'gray' }}>Cancelled</span>
+                            <span style={{ color:'red' }}>Hủy</span>
                         </Option>
                     </Select>
                 )
             }
         },
         {
-            title:"Payment",
+            title:"Thanh toán",
             key:'payment_status',
-            render: record=><span>{record.payment_status === 1 ? "Paid" : "Unpaid"}</span>
+            render: record=><span>{record.payment_status === 1 ? "Đã thanh toán" : "Chưa thanh toán"}</span>
         },
         {
-            title:"Customize",
+            title:"Tùy chỉnh",
             key:'option',
             render:record=>(
                 <div style={{ display:'flex',flexDirection:'row',alignItems:'center' }}>
                     <Button>
                         <Link to={`/admin/billdetails/${record.code_order}`}>
-                            Detail
+                            Chỉnh sửa
                         </Link>
                     </Button>
                     <DeleteOutlined 
@@ -174,10 +174,10 @@ export default function Invoices(){
       
     return(
     <div>
-        <p>You need to delete other canceled orders to put the product back in inventory.</p>
+        <p>Bạn cần xóa các đơn hàng đã hủy khác để đưa sản phẩm về kho.</p>
 
         <Table 
-            showSorterTooltip={{ title: 'Click to sort' }}
+            showSorterTooltip={{ title: 'Nhấn để lọc' }}
             columns={columns} 
             dataSource={fulldataBill} 
             size="small" 
@@ -185,15 +185,15 @@ export default function Invoices(){
             loading={loadingTable} />
          {showModalDeleteBill &&
             <Modal
-                title={`You definitely want to delete the invoice #${dataItemTmp.id}`}
+                title={`Bạn chắc chắn muốn xóa hóa đơn #${dataItemTmp.id}`}
                 visible={showModalDeleteBill}
                 onOk={handleDeleteItem}
                 onCancel={()=>setshowModalDeleteBill(false)}
-                cancelText="Exit"
-                okText="Sure"
+                cancelText="Thoát"
+                okText="OK"
             >
-                <p>You are sure of your decision! All data about this invoice will be deleted.</p>
-                <p> And the products in this invoice will be returned to the inventory!</p>
+                <p>Bạn chắc chắn về quyết định của mình! Tất cả dữ liệu về hóa đơn này sẽ bị xóa.</p>
+                <p>Và những sản phẩm trong hóa đơn này sẽ được trả về kho!</p>
             </Modal>
         }
     </div>

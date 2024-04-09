@@ -56,7 +56,7 @@ export default function Register(props){
         <div>
         <PageHeader
             onBack={() => props.back()}
-            title={"Continue to register with "}
+            title={"Tiếp tục đăng nhập với "}
             subTitle={email}
             style={{padding:0}}
         />
@@ -67,13 +67,13 @@ export default function Register(props){
             onFinish={handleRegister}
             scrollToFirstError>
             <Form.Item
-                label="Full name"
+                label="Họ và tên"
                 name="name"
-                rules={[{ required: true, message: 'Please enter your account name !' }]}
+                rules={[{ required: true, message: 'Vui lòng nhập tên tài khoản của bạn !' }]}
                 style={{width:'80%'}}
             >
                 <Input
-                    placeholder="Enter full name"
+                    placeholder="Nhập họ và tên"
                     value={name}
                     defaultValue={name}
                     onChange= {(e)=>setname(e.target.value)}
@@ -82,17 +82,17 @@ export default function Register(props){
                 />
             </Form.Item>
             <Form.Item
-                label="User name"
+                label="Tên đăng nhập"
                 name="username"
                 hasFeedback
                 rules={[
-                    { required: true, message: 'Please enter your full name !' },
+                    { required: true, message: 'Vui lòng nhập tên của bạn!' },
                     { validator: checkUserExist}
                 ]}
                 style={{width:'80%'}}
             >
                 <Input
-                    placeholder="Enter account name"
+                    placeholder="Nhập tên tài khoản"
                     value={username}
                     defaultValue={username}
                     onChange= {(e)=>setusername(e.target.value)}
@@ -101,16 +101,16 @@ export default function Register(props){
                 />
             </Form.Item>
             <Form.Item
-                label="Password"
+                label="Mật khẩu"
                 name="password"
                 rules={[
-                    { required: true, message: 'Please enter a password !' },
-                    {min:3,message:'Password must be at least 3 characters'}
+                    { required: true, message: 'Vui lòng nhập mật khẩu !' },
+                    {min:3,message:'Mật khẩu phải có ít nhất 3 ký tự'}
                 ]}
                 style={{width:'80%'}}
             >
                 <Input.Password
-                    placeholder="Enter password"
+                    placeholder="Nhập mật khẩu"
                     value={password}
                     defaultValue={password}
                     onChange= {(e)=>setpassword(e.target.value)}
@@ -120,27 +120,27 @@ export default function Register(props){
                 />
             </Form.Item>
             <Form.Item
-                name="confirm"
-                label="Enter the password"
+                name="Xác nhận"
+                label="Nhập mật khẩu"
                 style={{width:'80%'}}
                 hasFeedback
                 rules={[
                 {
                     required: true,
-                    message: 'Please re-enter your password !',
+                    message: 'Vui lòng nhập lại mật khẩu của bạn!',
                 },
                 ({ getFieldValue }) => ({
                     validator(_, value) {
                     if (!value || getFieldValue('password') === value) {
                         return Promise.resolve();
                     }
-                    return Promise.reject(new Error('Re-entered password must be correct as above!'));
+                    return Promise.reject(new Error('Mật khẩu nhập lại phải đúng như trên!'));
                     },
                 }),
                 ]}
             >
                 <Input.Password
-                    placeholder="Enter password"
+                    placeholder="Nhập mật khẩu"
                     value={confirmpass}
                     defaultValue={confirmpass}
                     onChange= {(e)=>setconfirmpass(e.target.value)}
@@ -151,7 +151,7 @@ export default function Register(props){
             </Form.Item>
             <Form.Item style={{ padding:"10px 0px" }} >
                 <Button htmlType="submit" type="primary" danger style={{ width:100,height:45,borderRadius:8 }}>
-                  Register
+                  Đăng ký
                 </Button>
             </Form.Item>
             
@@ -161,13 +161,13 @@ export default function Register(props){
     const ResultSccuess = ()=>(
         <Result
             status="success"
-            title="Successful registration !"
-            subTitle="Would you like to log in now ?"
+            title="Đăng ký thành công !"
+            subTitle="Bạn có muốn đăng nhập ngay bây giờ?"
             extra={[
             <Button onClick={handleLogin} type="primary" key="console">
-               Log in now !
+               Đăng nhập ngay !
             </Button>,
-            <Button onClick={props.cancel} key="buy">Later</Button>,
+            <Button onClick={props.cancel} key="buy">Trở về</Button>,
             ]}
         />
     )

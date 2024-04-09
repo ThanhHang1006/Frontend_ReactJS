@@ -24,48 +24,48 @@ export default function FooterWeb() {
             />
 
             <span className="title-logo" style={{ fontSize: 20, marginLeft: 10, marginTop: 5 }}>
-              Fashion HQ
+              TrungAnh shop
             </span>
           </div>
           <div style={{marginTop: 27}}>
             <span>
-               “Fashion for everyone” targets an extremely diverse customer base, from women, children to men. Even the brand name CTFASHION implicitly contains this orientation.
+               "Thời trang cho mọi người" hướng đến đối tượng khách hàng vô cùng đa dạng cho mọi lứa tuổi."
             </span>
           </div>
         </Col>
         <Col xl={6} className="widget-footer style2">
-          <h2 className="widget-title-footer">Account</h2>
+          <h2 className="widget-title-footer">Tài khoản</h2>
           <ul>
             <li>
-              <Link to={{ pathname: "/" }}>Login</Link>
+              <Link to={{ pathname: "/" }}>Đăng nhập</Link>
             </li>
             <li>
-              <Link to={{ pathname: "/" }}>Register</Link>
+              <Link to={{ pathname: "/" }}>Đăng ký</Link>
             </li>
             <li>
-              <Link to={{ pathname: "/billfollow" }}>Order</Link>
+              <Link to={{ pathname: "/billfollow" }}>Đơn hàng</Link>
             </li>
             <li>
-              <Link to={{ pathname: "/cart" }}>Cart</Link>
+              <Link to={{ pathname: "/cart" }}>Giỏ hàng</Link>
             </li>
           </ul>
         </Col>
         <Col xl={6} className="widget-footer style3">
-          <h2 className="widget-title-footer">Shop</h2>
+          <h2 className="widget-title-footer">Cửa hàng</h2>
           <ul>
             <li>
-              <Link to={{ pathname: "/" }}>Explore</Link>
+              <Link to={{ pathname: "/" }}>Khám phá</Link>
             </li>
             <li>
-              <Link to={{ pathname: "/" }}>Contact</Link>
+              <Link to={{ pathname: "/" }}>Liên hệ</Link>
             </li>
             <li>
-              <Link to={{ pathname: "/" }}>Introduce</Link>
+              <Link to={{ pathname: "/" }}>Giới thiệu</Link>
             </li>
           </ul>
         </Col>
         <Col xl={6} className="widget-footer style4">
-          <h2 className="widget-title-footer">Feedback To Us</h2>
+          <h2 className="widget-title-footer">Phản hồi cho chúng tôi</h2>
           <ul>
             <li>
               <a href="" target="_blank">

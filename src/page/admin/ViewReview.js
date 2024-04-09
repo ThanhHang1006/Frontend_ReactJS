@@ -20,7 +20,7 @@ export default function ViewReview(){
     }
     const columns  = [
         {
-            title:"Product name",
+            title:"Tên sản phẩm",
             key:'Product',
             ...getColumnSearchProps('nameProduct',searchInput),
             render: record=>(
@@ -36,7 +36,7 @@ export default function ViewReview(){
             ...getColumnSearchProps('emailUser',searchInput)
         },
         {
-            title:"Star",
+            title:"Sao",
             key:'reviewStar',
             render: record=>(
                 <Rate 
@@ -46,7 +46,7 @@ export default function ViewReview(){
             )
         },
         {
-            title:"Comment",
+            title:"Đánh giá",
             key:'comment',
             render: record=><span>{record.comment}</span>
         }

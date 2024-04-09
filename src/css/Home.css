@@ -307,7 +307,7 @@
   display: flex !important;
   align-items: center;
   height: 430px;
-  background-image: url(../images/sslider2.png);
+  background-image: url(../images/slider2.png);
   background-size: cover;
 }
 
@@ -315,7 +315,7 @@
   display: flex !important;
   align-items: center;
   height: 430px;
-  background-image: url(../images/sslider1.png);
+  background-image: url(../images/slider1.png);
   background-size: cover;
 }
 

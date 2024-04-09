@@ -39,12 +39,12 @@ export default function Inventory(){
         if(res.msg){
             if(res.msg==="Success"){
                 setTimeout(()=>{
-                    message.success("Updated product "+name+" successfully !");
+                    message.success("Cập nhật sản phẩm"+name+" thành công !");
                     getFullInventory()
                 },500)
             }else{
                 setTimeout(()=>{
-                    message.error("There's an error !!");
+                    message.error("Xảy ra lỗi !!");
                     setloadingTable(false);
                 },500)
             }
@@ -55,19 +55,19 @@ export default function Inventory(){
         const res = await FetchAPI.postDataAPI("/inventory/deleteItemInventory",{"id":dataItemTmp.id})
         if(res.msg){
             if(res.msg==="Success"){
-                message.success(`Delete prodcut ${dataItemTmp.nameProduct} type ${dataItemTmp.size} successfully !`);
+                message.success(`Xóa sản phẩm ${dataItemTmp.nameProduct} kiểu ${dataItemTmp.size} thành công !`);
                 getFullInventory();
                 setshowModalDeleteInventory(false);
                 setloadingTable(false);
             }else{
                 setloadingTable(false);
-                message.error("There's an error !!!")
+                message.error("Xảy ra lỗi !!!")
             }
         }
     }
     const columns  = [
         {
-            title:"Product",
+            title:"Sản phẩm",
             key:'product',
             ...getColumnSearchProps('name',searchInput),
             render: record =>(
@@ -78,12 +78,12 @@ export default function Inventory(){
             )
         },
         {
-            title:"Type, Size",
+            title:"Kiểu, size",
             key:'option',
             render: record=><span>{record.size}</span>
         },
         {
-            title:"Quantity",
+            title:"Số lượng",
             key:'quanity',
             sorter: (a, b) =>a.quanity-b.quanity,
             render: record=>(
@@ -94,23 +94,23 @@ export default function Inventory(){
                 />)
         },
         {
-            title:"Sold",
+            title:"Đã bán",
             key:'sold',
             render: record=><span style={{fontWeight:'bold',color:'gray'}}>{record.sold}</span>
         },
         {
-            title:"Rest",
+            title:"Tồn kho",
             key:'rest',
             render: record=><span>{record.quanity-record.sold}</span>
         },
         {
-            title:"Last updated",
+            title:"Cập nhật lần cuối",
             key:'lastUpdate',
             sorter: (a, b) => new Date(a.update_at) - new Date(b.update_at),
             render: record=><span>{moment(record.update_at).format('YYYY-MM-DD HH:mm:ss')}</span>
         },
         {
-            title:"Customize",
+            title:"Tùy chỉnh",
             key:'option',
             render:record=>
             <DeleteOutlined 
@@ -125,7 +125,7 @@ export default function Inventory(){
         <div>
         <Button type="primary" style={{ marginBottom:20 }} danger >
             <Link to="/admin/addInventory" >
-                Enter inventory <PlusCircleOutlined />
+            Nhập hàng tồn kho <PlusCircleOutlined />
             </Link>    
         </Button>
         <Table 
@@ -138,14 +138,14 @@ export default function Inventory(){
         />
         {showModalDeleteInventory &&
             <Modal
-                title={`You definitely want to delete ${dataItemTmp.name} type ${dataItemTmp.size}`}
+                title={`Bạn chắc chắn muốn xóa ${dataItemTmp.name} kiểu ${dataItemTmp.size}`}
                 visible={showModalDeleteInventory}
                 onOk={handleDeleteItem}
                 onCancel={()=>setshowModalDeleteInventory(false)}
                 cancelText="Exit"
                 okText="Sure"
             >
-                <p>You are sure of your decision! All data about this item will be permanently deleted.</p>
+                <p>Bạn chắc chắn về quyết định của mình! Tất cả dữ liệu về mục này sẽ bị xóa vĩnh viễn..</p>
             </Modal>
         }
         </div>

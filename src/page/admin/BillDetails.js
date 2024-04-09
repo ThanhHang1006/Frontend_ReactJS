@@ -64,12 +64,12 @@ export default function BillDetails(){
         if(res.msg){
             if(res.msg==="Success"){
                 setTimeout(()=>{
-                    message.success("Update bill #"+id+" successfully !");
+                    message.success("Cập nhật hóa đơn #"+id+" thành công !");
                     // setloadingTable(false);
                 },500)
             }else{
                 setTimeout(()=>{
-                    message.error("There's an error !!");
+                    message.error("Xảy ra lỗi !!");
                     // setloadingTable(false);
                 },500)
             }
@@ -105,12 +105,12 @@ export default function BillDetails(){
         let pri = document.getElementById('ifmcontentstoprint').contentWindow;
         pri.document.open();
         pri.document.write(inforbill.outerHTML);
-        pri.document.write("<b>Transport fee:</b>   "+shipping[0].innerHTML);
+        pri.document.write("<b>Phí vận chuyển:</b>   "+shipping[0].innerHTML);
         pri.document.write(tableProduct+"</table>");
         if(saleBill.length!==0){
             pri.document.write("<div style=\" padding-top:18px;font-size:24px\"><b> Promotion code :  </b>"+saleBill[0].innerHTML+"</div>");
         }
-        pri.document.write("<div style=\" padding-top:18px;font-size:24px\"><b> Total :  </b>"+totalBill[0].innerHTML+"</div>");
+        pri.document.write("<div style=\" padding-top:18px;font-size:24px\"><b> Tổng :  </b>"+totalBill[0].innerHTML+"</div>");
         pri.document.close();
         pri.focus();
         pri.print();
@@ -122,17 +122,17 @@ export default function BillDetails(){
         const res = await FetchAPI.postDataAPI("/order/deleteBill",data);
         if(res.msg){
             if(res.msg==="Success"){
-                message.success(`You have successfully deleted invoice  #${dataBill.id} !`);
+                message.success(`Bạn đã xóa thành công hóa đơn #${dataBill.id} !`);
                 history.push('/admin/invoices')
             }else{
-                message.error("There's an error !!");
+                message.error("Xảy ra lỗi !!");
                 setshowContent(true)
             }
         }
     }
     const columns  = [
         {
-            title:"Product",
+            title:"Sản phẩm",
             key:'product',
             render : record=>{
                 return(
@@ -144,10 +144,10 @@ export default function BillDetails(){
             }
         },
         {
-            title:"Total",
+            title:"Tổng",
             key:'total_price',
             render: record=>{
-                return <span className="BillPrice">{getPriceVND(record.price*record.quanity) +" $"}</span>
+                return <span className="BillPrice">{getPriceVND(record.price*record.quanity) +" VNĐ"}</span>
             }
         }
     ]
@@ -161,22 +161,22 @@ export default function BillDetails(){
             summary={()=>(
                 <Table.Summary>
                     <Table.Summary.Row>
-                        <Table.Summary.Cell index={0}><span style={{fontWeight:'bold'}}>Provisional</span></Table.Summary.Cell>
-                        <Table.Summary.Cell index={1}>{getPriceVND(totalTmp)+" $"}</Table.Summary.Cell>
+                        <Table.Summary.Cell index={0}><span style={{fontWeight:'bold'}}>Tạm tính</span></Table.Summary.Cell>
+                        <Table.Summary.Cell index={1}>{getPriceVND(totalTmp)+" VNĐ"}</Table.Summary.Cell>
                     </Table.Summary.Row>
                     {dataSale !== undefined &&
                         <Table.Summary.Row >
-                            <Table.Summary.Cell index={0}><span style={{fontWeight:'bold'}}>Promotion code</span></Table.Summary.Cell>
-                            <Table.Summary.Cell className="SaleBill" index={1}>{"-"+getPriceVND(promotionprice)+" $"}</Table.Summary.Cell>
+                            <Table.Summary.Cell index={0}><span style={{fontWeight:'bold'}}>Mã khuyến mãi</span></Table.Summary.Cell>
+                            <Table.Summary.Cell className="SaleBill" index={1}>{"-"+getPriceVND(promotionprice)+" VNĐ"}</Table.Summary.Cell>
                         </Table.Summary.Row>
                     }
                     <Table.Summary.Row>
-                        <Table.Summary.Cell index={0}><span style={{fontWeight:'bold'}}>Transport fee</span></Table.Summary.Cell>
+                        <Table.Summary.Cell index={0}><span style={{fontWeight:'bold'}}>Phí vận chuyển</span></Table.Summary.Cell>
                         <Table.Summary.Cell index={1}  className="Shipping" >{getPriceVND(10)+" $"}</Table.Summary.Cell>
                     </Table.Summary.Row>
                     <Table.Summary.Row >
-                        <Table.Summary.Cell index={0}><span style={{fontWeight:'bold'}}>Total</span></Table.Summary.Cell>
-                        <Table.Summary.Cell className="TotalBill" index={1}>{getPriceVND(getPricePayment())+" $"}</Table.Summary.Cell>
+                        <Table.Summary.Cell index={0}><span style={{fontWeight:'bold'}}>Tổng</span></Table.Summary.Cell>
+                        <Table.Summary.Cell className="TotalBill" index={1}>{getPriceVND(getPricePayment())+" VNĐ"}</Table.Summary.Cell>
                     </Table.Summary.Row>
                 </Table.Summary>
         )}
@@ -191,16 +191,16 @@ export default function BillDetails(){
             disabled={status===3}
         >
             <Option value={0}>
-                <span style={{ color:'red' }}>Processing</span>
+                <span style={{ color:'gray' }}>Đang xử lý</span>
             </Option>
             <Option value={1}>
-                <span style={{color:'blue' }}>Delivering</span>
+                <span style={{color:'blue' }}>Đang giao hàng</span>
             </Option>
             <Option value={2}>
-                <span style={{ color:'green' }}>Completed</span>
+                <span style={{ color:'green' }}>Hoàn thành</span>
             </Option>
             <Option value={3} disabled>
-                <span style={{ color:'gray' }}>Cancelled</span>
+                <span style={{ color:'red' }}>Đã hủy</span>
             </Option>
         </Select>
        )
@@ -212,52 +212,52 @@ export default function BillDetails(){
             <PageHeader
                 className="site-page-header"
                 onBack={() => history.goBack()}
-                title="Order details"
-                subTitle={"Order code: #"+dataBill.id}
+                title="Chi tiết đơn hàng"
+                subTitle={"Mã đơn hàng #"+dataBill.id}
             />
             <Row>
                 <Col lg={14} xs={24} style={{ padding:"20px 40px" }} >
                     {ViewProduct()}
-                    <Card title="Payment address" style={{ marginTop:30,boxShadow:'2px 0px 30px #00000026' }}>
+                    <Card title="Địa chỉ thanh toán" style={{ marginTop:30,boxShadow:'2px 0px 30px #00000026' }}>
                     <div style={{ fontSize:16 }}>
                     <Space direction="vertical" size={20}>
-                        <span><b>Name: </b>{dataBill.name}</span>
-                        <span><b>Address: </b>{dataBill.address}</span>
+                        <span><b>Tên khách hàng: </b>{dataBill.name}</span>
+                        <span><b>Địa chỉ giao hàng: </b>{dataBill.address}</span>
                         <span><b>Email: </b>{dataBill.email}</span>
-                        <span><b>Phone: </b>{dataBill.phone} </span>
+                        <span><b>Số điện thoại: </b>{dataBill.phone} </span>
                     </Space>
                     </div>
                     </Card>
                 </Col>
                 <Col lg={10} xs={24} style={{ justifyContent:'center',display:'flex' }}>
-                    <Card title="Order information." style={{ marginTop:20,width:'80%',boxShadow:'2px 0px 30px #00000026' }}>
+                    <Card title="Thông tin đơn hàng." style={{ marginTop:20,width:'80%',boxShadow:'2px 0px 30px #00000026' }}>
                     <ul>
                         <Space size={10} direction="vertical">
                             <div id="Inforbill">
                             <Space size={10} direction="vertical">
-                                <li>Order code :  <b>{"#"+dataBill.id}</b></li>
-                                <li>Date order:  <b>{moment(new Date(dataBill.create_at)).format("YYYY-MM-DD hh:mm:ss")}</b></li>
-                                <li>Customer name :  <b>{dataBill.name}</b></li>
+                                <li>Mã hóa đơn :  <b>{"#"+dataBill.id}</b></li>
+                                <li>Ngày đặt hàng:  <b>{moment(new Date(dataBill.create_at)).format("YYYY-MM-DD hh:mm:ss")}</b></li>
+                                <li>Tên khách hàng :  <b>{dataBill.name}</b></li>
                                 <li>Email :  <b>{dataBill.email}</b></li>
-                                <li>Total :  <b>{getPriceVND(getPricePayment())+" $"}</b></li>
-                                <li>Updated order time: <b> {moment(new Date(dataBill.update_at)).format("YYYY-MM-DD hh:mm:ss")}</b></li>
-                                <li>Payment status: 
-                                    <b>{dataBill.payment_status ===1 ? " Paid":" Unpaid"}</b>
+                                <li>Tổng :  <b>{getPriceVND(getPricePayment())+" $"}</b></li>
+                                <li>Thời gian đặt hàng: <b> {moment(new Date(dataBill.update_at)).format("YYYY-MM-DD hh:mm:ss")}</b></li>
+                                <li>Trạng thái thanh toán: 
+                                    <b>{dataBill.payment_status ===1 ? " Đã thanh toán":"Chưa thanh toán"}</b>
                                 </li>
-                                <li>Payment method: 
-                                    <b>{dataBill.payment_status ===1 ? " Bank transfer":" Pay cash"}</b>
+                                <li>Phương thức thanh toán: 
+                                    <b>{dataBill.payment_status ===1 ? " Thẻ tín dụng":" Trả tiền mặt"}</b>
                                 </li>
                             </Space>
                             </div>
                             <li>
-                                Status : {getStatus(dataBill.status)}
+                                Trạng thái : {getStatus(dataBill.status)}
                             </li>
                             <div style={{ marginTop: 20}}>
                                 <Button style={{ borderRadius : 10}} type="primary" danger onClick={()=>setshowModalDeleteBill(true)}>
-                                    Delete invoice
+                                    Xóa hóa đơn
                                 </Button>
                                 <Button  type="primary" success style={{ marginLeft:30, borderRadius : 10 }} onClick={handlePrintInvoices}>
-                                    Print invoice <PrinterOutlined />
+                                    In hóa đơn <PrinterOutlined />
                                 </Button>
                             </div>
                         </Space>
@@ -267,15 +267,15 @@ export default function BillDetails(){
             </Row> 
             {showModalDeleteBill &&
                 <Modal
-                    title={`You definitely want to delete the invoice #${dataBill.id}`}
+                    title={`bạn chắc chắn muốn xóa hóa đơn #${dataBill.id}`}
                     visible={showModalDeleteBill}
                     onOk={handleDeleteItem}
                     onCancel={()=>setshowModalDeleteBill(false)}
-                    cancelText="Exit"
-                    okText="Sure"
+                    cancelText="Thoát"
+                    okText="OK"
                 >
-                    <p>You are sure of your decision! All data about this invoice will be deleted.</p>
-                    <p>And the products in this invoice will be returned to the inventory !</p>
+                    <p>Bạn chắc chắn về quyết định của mình! Tất cả dữ liệu về hóa đơn này sẽ bị xóa.</p>
+                    <p>Và những sản phẩm trong hóa đơn này sẽ được trả về kho!</p>
                 </Modal>
             }
             <iframe 

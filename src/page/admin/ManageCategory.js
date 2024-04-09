@@ -39,7 +39,7 @@ export default function ManageCategory(){
         const res = await FetchAPI.postDataAPI("/product/addCategory",data);
         if(res.msg){
             if(res.msg==="Success"){
-                message.success("Added successfully");
+                message.success("Thêm mới thành công");
                 getCategory();
                 setdataAdd({});
                 formAdd.setFieldsValue({name:"",status:null})
@@ -47,7 +47,7 @@ export default function ManageCategory(){
                 setshowModalAdd(false)
 
             }else{
-                message.error("There's an error !!")
+                message.error("Xảy ra lỗi !!")
                 setloadingBtn(false)
             }
         }
@@ -58,13 +58,13 @@ export default function ManageCategory(){
         const res = await FetchAPI.postDataAPI("/product/editCategory",data);
         if(res.msg){
             if(res.msg==="Success"){
-                message.success("Update successfully");
+                message.success("Cập nhật thành công");
                 getCategory();
                 setitemTmp({})
                 formEdit.setFieldsValue({name:"",status:null})
                 setloadingBtn(false)
             }else{
-                message.error("There's an error !!")
+                message.error("Xảy ra lỗi !!")
             }
         }
     }
@@ -78,17 +78,17 @@ export default function ManageCategory(){
     };
     const columns = [
         {
-            title:"Category ID",
+            title:"ID Danh mục",
             name:"id",
             render: record=><span style={{fontWeight:'bold'}}>{"#"+record.id}</span>
         },
         {
-            title:"Category name",
+            title:"Tên danh mục sản phẩm",
             name:"name",
             render: record=><span>{record.name}</span>
         },
         {
-            title:"Product quantity",
+            title:"Số lượng sản phẩm",
             name:"product",
             render:record=>{
                 let i = 0;
@@ -97,11 +97,11 @@ export default function ManageCategory(){
                         i++
                     }
                 })
-                return (<span>{i+" product"}</span>)
+                return (<span>{i+" sản phẩm"}</span>)
             }
         }, 
         {
-            title:"Customized",
+            title:"Trạng thái",
             name:"option",
             render: record=>{
                 return(
@@ -130,7 +130,7 @@ export default function ManageCategory(){
     ]
     const DrawerEdit = ()=>(
         <Drawer
-            title="Edit product categories"
+            title="Chỉnh sửa danh mục sản phẩm"
             visible={drawerEdit}
             width={overflowX ?"100%":520}
             onClose={()=>setdrawerEdit(false)}
@@ -142,17 +142,17 @@ export default function ManageCategory(){
               onFinish={handleEditCategory}
             >
                 <Form.Item
-                    label="Category name"
+                    label="Tên danh mục sản phẩm"
                     name="name"
                 >
                     <Input
-                        placeholder="Enter category name"
+                        placeholder="Nhập tên danh mục"
                         value={itemTmp.name}
                         onChange= {(e)=>itemTmp.name=e.target.value}
                     /> 
                 </Form.Item>
                 <Form.Item
-                    label="Status"
+                    label="Trạng thái"
                     name="status"
                 >
                     <Select
@@ -160,10 +160,10 @@ export default function ManageCategory(){
                         onChange= {(e)=>itemTmp.status=e}
                     >
                         <Option value={0}>
-                            Show
+                            Hiện
                         </Option>
                         <Option value={1}>
-                            Hide
+                            Ẩn
                         </Option>
 
                     </Select>
@@ -171,7 +171,7 @@ export default function ManageCategory(){
                 <Form.Item
                     label="Logo"
                     name="logo"
-                    rules={[{ required: true, message: 'Please choose a logo'}]}
+                    rules={[{ required: true, message: 'Vui lòng chọn logo'}]}
                 >
                      <ImgCrop 
                         rotate
@@ -188,7 +188,7 @@ export default function ManageCategory(){
                             {logoTmp.length<1 &&
                                 <div>
                                     <UploadOutlined />
-                                    <span>Upload</span> 
+                                    <span>Tải lên</span> 
                                 </div>
                             }                            
                         </Upload>  
@@ -196,7 +196,7 @@ export default function ManageCategory(){
                 </Form.Item>
                 <Form.Item style={{ paddingTop:20 }}  wrapperCol={{ span: 12, offset: 10 }}>
                     <Button type="primary" htmlType="submit" danger loading={loadingBtn}>
-                        Update
+                        Cập nhật
                     </Button>
                     <Button type="primary" danger style={{ borderRadius:10,marginLeft:20 }}>
                             <DeleteOutlined />
@@ -207,7 +207,7 @@ export default function ManageCategory(){
     )
     const ModalAddNew = ()=>(
         <Modal
-            title="Add Category"
+            title="Thêm mới danh mục sản phẩm"
             visible={showModalAdd}
             onCancel={()=>setshowModalAdd(false)}
             footer={false}
@@ -219,31 +219,31 @@ export default function ManageCategory(){
                 onFinish={handleAddCategory}
             >
                 <Form.Item
-                    label="Category name"
+                    label="Tên danh mục sản phẩm"
                     name="name"
-                    rules={[{ required: true, message: 'Please enter category name'}]}
+                    rules={[{ required: true, message: 'Nhập tên danh mục sản phẩm'}]}
                 >
                     <Input
-                        placeholder="Enter category name"
+                        placeholder="Nhập tên danh mục sản phẩm"
                         value={dataAdd.name}
                         onChange= {(e)=>setdataAdd({...dataAdd,name:e.target.value})}
                     /> 
                 </Form.Item>
     
                 <Form.Item
-                    label="Status"
+                    label="Trạng thái"
                     name="status"
-                    rules={[{ required: true, message: 'Please select status'}]}
+                    rules={[{ required: true, message: 'Chọn trạng thái '}]}
                 >
                     <Select
                         value={dataAdd.status}
                         onChange= {(e)=>setdataAdd({...dataAdd,status:e})}
                     >
                         <Option value={0}>
-                            Show
+                            Hiện
                         </Option>
                         <Option value={1}>
-                            Hide
+                            Ẩn
                         </Option>
 
                     </Select>
@@ -251,7 +251,7 @@ export default function ManageCategory(){
                 <Form.Item
                     label="Logo"
                     name="logo"
-                    rules={[{ required: true, message: 'Please choose a logo'}]}
+                    rules={[{ required: true, message: 'Chọn logo'}]}
                 >
                 <ImgCrop 
                     rotate
@@ -268,7 +268,7 @@ export default function ManageCategory(){
                         {logoCategory.length===0 && 
                         <div>
                             <UploadOutlined />
-                            <span>Upload</span> 
+                            <span>Tải lên</span> 
                         </div>
                         }
                     </Upload>  
@@ -276,7 +276,7 @@ export default function ManageCategory(){
                 </Form.Item>
                 <Form.Item style={{ paddingTop:20 }}  wrapperCol={{ span: 12, offset: 10 }}>
                     <Button type="primary" htmlType="submit" danger loading={loadingBtn}>
-                        Add
+                        Thêm mới
                     </Button>
                 </Form.Item>
             </Form>
@@ -287,7 +287,7 @@ export default function ManageCategory(){
             {showContent ?
             <div>
                 <Button type="primary" style={{ marginBottom:20 }} danger onClick={()=>setshowModalAdd(true)}>
-                    Add Category <PlusCircleOutlined />
+                    Thêm mới danh mục sản phẩm <PlusCircleOutlined />
                 </Button>
                 <Table 
                     columns={columns}

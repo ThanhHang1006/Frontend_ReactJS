@@ -50,9 +50,9 @@ import React, { useState } from "react";
               setIsSuccess(true);
               setTimeout(() => {
                 Swal.fire(
-                  "Congratulations",
-                  "Order created successfully",
-                  "success"
+                  "Chúc mừng",
+                  "Đơn hàng được tạo thành công",
+                  "thành công"
                 ).then(() => {
                   history.push("/");
                 });
@@ -64,9 +64,9 @@ import React, { useState } from "react";
             setIsSuccess(false);
             setTimeout(() => {
               Swal.fire(
-                "Error",
-                "Order created Failed",
-                "failure"
+                "Lỗi",
+                "Tạo đơn hàng thất bại",
+                "Xảy ra lỗi"
               ).then(() => {
                 history.push("/");
                

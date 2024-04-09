@@ -18,7 +18,7 @@ export default function Contact() {
     <div style={{ marginTop: 20, marginLeft: 30 }}>
       <Breadcrumb style={{ fontSize: 18, padding: "20px 20px" }}>
         <Breadcrumb.Item>
-          <Link to={"/home"}>Home</Link>
+          <Link to={"/home"}>Trang chủ</Link>
         </Breadcrumb.Item>
         <Breadcrumb.Item>{`Contact`}</Breadcrumb.Item>
       </Breadcrumb>
@@ -40,10 +40,10 @@ export default function Contact() {
         >
           <div>
             <h2 style={{ fontWeight: "bold" }}>
-              THE PLACE TO ANSWER ALL YOUR QUESTIONS
+            NƠI GIẢI ĐÁP MỌI CÂU HỎI CỦA BẠN
             </h2>
             <span className="text">
-              With the mission "Customers are the number 1 priority" we always bring the best value
+            Với sứ mệnh “Khách hàng là ưu tiên số 1” chúng tôi luôn mang lại những giá trị tốt nhất
             </span>
             <div style={{ display: "inline-grid", marginBottom: 20 }}>
               <div style={{ display: "-webkit-inline-box", marginTop: 20 }}>
@@ -55,9 +55,9 @@ export default function Contact() {
                   </div>
                   <div style={{ display: "inline-grid" }}>
                     <span style={{ fontWeight: "bold", fontSize: 14 }}>
-                    Address
+                    Địa chỉ
                     </span>
-                    <span>115 Do Thuc Tinh, Khue Trung, Cam Lam, Da Nang</span>
+                    <span>Nga ba Thong Nhat, Dien Duong, Dien Ban</span>
                   </div>
                 </div>
                 <div style={{ display: "flex" }}>
@@ -66,9 +66,9 @@ export default function Contact() {
                   </div>
                   <div style={{ display: "inline-grid" }}>
                     <span style={{ fontWeight: "bold", fontSize: 14 }}>
-                      Working time
+                      Thời gian làm việc
                     </span>
-                    <span>8am - 5pm daily</span>
+                    <span>8am - 20pm hàng ngày</span>
                   </div>
                 </div>
               </div>
@@ -81,7 +81,7 @@ export default function Contact() {
                   </div>
                   <div style={{ display: "inline-grid" }}>
                     <span style={{ fontWeight: "bold", fontSize: 14 }}>
-                      Hotline
+                      Gọi ngay: 
                     </span>
                     <span>10032001</span>
                   </div>
@@ -94,18 +94,18 @@ export default function Contact() {
                     <span style={{ fontWeight: "bold", fontSize: 14 }}>
                       Email
                     </span>
-                    <span>fashionhq@gmail.com</span>
+                    <span>trunganh@gmail.com</span>
                   </div>
                 </div>
               </div>
             </div>
             <div style={{ width: "90%" }}>
-              <h2 style={{ fontWeight: "bold" }}> CONTACT US </h2>
+              <h2 style={{ fontWeight: "bold" }}> LIÊN HỆ VỚI CHÚNG TÔI </h2>
               <span className="text">
-               If you have any questions, you can send us a request, and we will contact you as soon as possible.
+              Nếu bạn có bất kỳ câu hỏi nào, bạn có thể gửi yêu cầu cho chúng tôi và chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.
               </span>
               <TextArea
-                placeholder="Full name"
+                placeholder="Họ và tên"
                 autoSize
                 style={{ marginBottom: 10 }}
               />
@@ -117,12 +117,12 @@ export default function Contact() {
               <TextArea
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
-                placeholder="Content"
+                placeholder="Nội dung"
                 autoSize={{ minRows: 3, maxRows: 5 }}
                 style={{ marginBottom: 10 }}
               />
               <Button type="primary" htmlType="submit" style={{ width: 100 }}>
-                Send
+                Gửi
               </Button>
             </div>
           </div>

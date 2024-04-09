@@ -47,7 +47,7 @@ export default function MenuProduct(){
     const Direction = ()=>(
         <Breadcrumb style={{ fontSize:18,paddingBottom:20 }}>
             <Breadcrumb.Item>
-                <Link to={"/home"}>Home</Link>
+                <Link to={"/home"}>Trang chủ</Link>
             </Breadcrumb.Item>
             <Breadcrumb.Item>
                 <Link to={`/category/${idCategory}`}>{nameCategory}</Link>
@@ -82,7 +82,7 @@ export default function MenuProduct(){
                 </div>
             </div>
             {empty ? 
-                <Empty className="empty" description="No products available"  />
+                <Empty className="empty" description="Sản phẩm k có sẵn"  />
                 :
                 <div>
                     <Row  gutter={ [{ xs: 160, sm: 16, md: 24, lg: 50 },12]} >

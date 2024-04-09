@@ -35,7 +35,7 @@ export default function BillFollow (){
     }
     const columns  = [
         {
-            title:"Order",
+            title:"Hóa đơn",
             key:'id',
             render: record=>{
                 return (
@@ -44,7 +44,7 @@ export default function BillFollow (){
             }
         },
         { 
-            title:"Date of Order",
+            title:"Ngày đặt hàng",
             dataIndex:"",
             key:'date',
             render:(record)=>{
@@ -54,38 +54,38 @@ export default function BillFollow (){
             }   
         },
         { 
-            title:"Status",
+            title:"Trạng thái",
             dataIndex:"",
             key:'status',
             render:(record)=>{
                 if(record.status===0){
-                    return <span style={{ color:'red' }}>Processing</span>
+                    return <span style={{ color:'red' }}>Đang xử lý</span>
                 }else if(record.status===1){
-                    return <span style={{color:'blue' }}>Delivering</span>
+                    return <span style={{color:'blue' }}>Đang giao hàng</span>
                 }else if(record.status===2) {
-                    return <span style={{ color:'green' }}>Complete</span>
+                    return <span style={{ color:'green' }}>Hoàn thành</span>
                 }else{
-                    return <span style={{ color:'gray' }}>Cancelled</span>
+                    return <span style={{ color:'gray' }}>Đã hủy</span>
                 }
             }
         },
         { 
-            title:"Total",
+            title:"Tổng",
             dataIndex:"",
             key:'total',
             render:(record)=>{
-               return <span>{getPriceVND(record.total_price) +" $"}</span>
+               return <span>{getPriceVND(record.total_price) +" VNĐ"}</span>
             }
         },
         { 
-            title:"Actions",
+            title:"Tùy chỉnh",
             dataIndex:"",
             key:'behavior',
             render:(record)=>{
                return (
                <Button>
                    <Link to={`/billdetails/${record.code_order}`}>
-                      Detail
+                      Sửa
                    </Link>
                 </Button>
                )
@@ -118,7 +118,7 @@ export default function BillFollow (){
                     columns={columns} 
                     dataSource={dataTmp} 
                     size="small"
-                    locale={{ emptyText:"You don't have any orders yet" }}/>
+                    locale={{ emptyText:"Bạn chưa có đơn đặt hàng nào" }}/>
             </div>
         )
     }
@@ -129,23 +129,23 @@ export default function BillFollow (){
                 {statusUser ? 
                 <div style={{ backgroundColor:'white',paddingTop:20,minHeight:450 }}>
                 <Tabs defaultActiveKey="1" type="card" onChange={(e)=>setkeyTab(e)} size="small" tabPosition="top" centered>
-                    <TabPane tab="All your orders" key="1">
+                    <TabPane tab="Tất cả đơn hàng của bạn" key="1">
                             <TabContent />
                     </TabPane>
-                    <TabPane tab="Processing" key="2">
+                    <TabPane tab="Đang chuẩn bị" key="2">
                             <TabContent />
                     </TabPane>
-                    <TabPane tab="Delivering" key="3">
+                    <TabPane tab="Đang giao hàng" key="3">
                             <TabContent />
                     </TabPane>
-                    <TabPane tab="Completed" key="4">
+                    <TabPane tab="Hoàn thành" key="4">
                             <TabContent />
                     </TabPane> 
                 </Tabs>
                 </div>
                 :
                 <div style={{ padding:"20px 40px" }}>
-                    <span style={{ fontWeight:'bold' }}>Please log in to track your order...</span>
+                    <span style={{ fontWeight:'bold' }}>Vui lòng đăng nhập để theo dõi đơn hàng của bạn...</span>
                 </div>
                 }
                 </div>

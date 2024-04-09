@@ -18,22 +18,22 @@ export default function ForgotPassword(){
 
             const res = await FetchAPI.postDataAPI("/user/forgot-password",{email:dataUser.email});
             if(res.msg){
-                if(res.msg==="The E-mail not exist"){
+                if(res.msg==="Email không tồn tại"){
                     setTimeout(()=>{
-                        message.error("The E-mail not exist !")
+                        message.error("Email không tồn tại !")
                         setloadingBtn(false)
                     },500)
                   
                 }else if(res.msg === "Success"){
                     setTimeout(()=>{
-                            message.success("New password have been send to your email !")
+                            message.success("Mật khẩu mới đã được gửi tới email của bạn !")
                             setloadingBtn(false)
                         },500)   
                 }
             }
         }
         else {
-            alert("There an error !")
+            alert("Xảy ra lỗi!")
             setloadingBtn(false)
         }   
     }
@@ -49,10 +49,10 @@ export default function ForgotPassword(){
             <Form.Item
                 label="Your Email"
                 name="email"
-                rules={[{ required: true, message: 'Enter your email'}]}
+                rules={[{ required: true, message: 'Nhập địa chỉ email'}]}
             >
                 <Input 
-                    placeholder="Enter Email"
+                    placeholder="Nhập Email"
                     value={dataUser?.email}
                     onChange= {(e)=>setdataUser({...dataUser,email:e.target.value})}
                 />
@@ -60,7 +60,7 @@ export default function ForgotPassword(){
            
             <Form.Item style={{ paddingTop:20 }}  wrapperCol={{ span: 12, offset: 10 }}>
                 <Button type="primary" htmlType="submit" danger loading={loadingBtn}>
-                    Submit
+                    OK
                 </Button>
             </Form.Item>
         </Form>
@@ -69,7 +69,7 @@ export default function ForgotPassword(){
         <div style={{ minHeight:450}}>
                 <div>
                     <div style={{ padding:"20px 20px" }}>
-                        Forgot Password....
+                       Quên mật khẩu....
                         {FormForgot()}
                     </div>
                 </div>

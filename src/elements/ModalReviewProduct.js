@@ -7,7 +7,7 @@ export default function ModalReviewProduct (props) {
     // console.log(props.user.id)
     const handleAddReview = async(data)=>{
         if(data.reviewStar===null){
-            message.warning('Please rate the product with stars!')
+            message.warning('Vui lòng đánh giá sản phẩm bằng sao!')
         }else{
             const req = {
                 "idOrderDetails":data.id,
@@ -19,10 +19,10 @@ export default function ModalReviewProduct (props) {
             const res = await FetchAPI.postDataAPI("/review/addReview",req);
             if(res.msg){
                 if(res.msg==="Success"){
-                    message.success("Thank. Your review has been saved");
+                    message.success("Cảm ơn, đánh giá đã được lưu");
                     props.refresh();
                 }else{
-                    message.error("There's an error !!");
+                    message.error("Xảy ra lỗi !!");
                 }
             }
         }
@@ -36,9 +36,9 @@ export default function ModalReviewProduct (props) {
         const res = await FetchAPI.postDataAPI("/review/editReview",req);
         if(res.msg){
             if(res.msg==="Success"){
-                message.success("Your review has been edited");
+                message.success("Đánh giá của bạn đã được chỉnh sửa");
             }else{
-                message.error("There's an error !!");
+                message.error("Xảy ra lỗi!!");
             }
         }
     }
@@ -55,17 +55,17 @@ export default function ModalReviewProduct (props) {
                 />
                 <Input.TextArea 
                     defaultValue={item.comment}
-                    placeholder="Your review of this product"
+                    placeholder="Đánh giá của bạn về sản phẩm này"
                     onChange= {(e)=>item.comment=e.target.value}
                 /> 
                 <div style={{display:'flex', justifyContent:'center',paddingTop:20 }}>
                 {item.reviewStar===null&&item.comment===null ?
                     <Button type="primary" danger onClick={()=>handleAddReview(item)}>
-                        Reviews
+                       Đánh giá
                     </Button>
                 :
                     <Button type="primary" danger onClick={()=>handleEditReview(item)}>
-                        Edit review
+                       Chỉnh sửa đánh giá
                     </Button>
                 }
                 </div>
@@ -76,7 +76,7 @@ export default function ModalReviewProduct (props) {
     }
     return(
         <Modal
-            title="Reviews product"
+            title="Đánh giá sản phẩm"
             open={props.visible}
             onCancel={props.onCancel}
             footer={false}

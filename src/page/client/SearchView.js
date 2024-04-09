@@ -31,10 +31,10 @@ export default function SearchView (){
     const Direction = ()=>(
         <Breadcrumb style={{ fontSize:16,padding:"10px 10px"}}>
             <Breadcrumb.Item>
-                <Link to={"/home"}>Home</Link>
+                <Link to={"/home"}>Trang chủ</Link>
             </Breadcrumb.Item>
             <Breadcrumb.Item>
-                <Link to={"/fullproduct/1"}>Shop</Link>
+                <Link to={"/fullproduct/1"}>Cửa hàng</Link>
             </Breadcrumb.Item>
             <Breadcrumb.Item>
                 {`Search results of "${datasearch}"`}
@@ -62,7 +62,7 @@ export default function SearchView (){
                 </Row>
                 :
                 <div style={{ display:'flex',alignItems:'center',justifyContent:'center',height:400 }}>
-                    No products were found...
+                  Không tìm thấy sản phẩm nào...
                 </div>
                 }
             </div>

@@ -27,20 +27,20 @@ export default function ChangePassword(){
             if(res.msg){
                 if(res.msg==="Success"){
                     setTimeout(()=>{
-                        message.success("Update successful !")
+                        message.success("Cập nhật thành công!")
                         setloadingBtn(false)
                     },500)
                   
                 }else if(res.msg === "Incorrect"){
                     setTimeout(()=>{
-                            message.error("Incorrect current password !")
+                            message.error("Mật khẩu hiện tại không chính xác !")
                             setloadingBtn(false)
                         },500)   
                 }
             }
         }
         else {
-            alert("Accept password not match !")
+            alert("Mật khẩu xác nhận không khớp!")
             setloadingBtn(false)
         }   
     }
@@ -54,42 +54,42 @@ export default function ChangePassword(){
           
         >
             <Form.Item
-                label="Current password"
+                label="Mật khẩu hiện tại"
                 name="password"
-                rules={[{ required: true, message: 'Enter current password'}]}
+                rules={[{ required: true, message: 'Nhập mật khẩu hiện tại'}]}
             >
                 <Input 
-                    placeholder="Enter current password"
+                    placeholder="Nhập mật khẩu hiện tại"
                     value={dataUser?.password}
                     onChange= {(e)=>setdataUser({...dataUser,password:e.target.value})}
                 />
             </Form.Item>
             <Form.Item
-                label="New password"
+                label="Mật khẩu mới"
                 name="new-password"
-                rules={[{ required: true, message: 'Enter new password'}]}
+                rules={[{ required: true, message: 'Nhập mật khẩu mới'}]}
 
             >
                 <Input 
-                    placeholder="Enter new password"
+                    placeholder="Nhập mật khẩu mới"
                     value={dataUser?.newPassword}
                     onChange= {(e)=>setdataUser({...dataUser,newPassword:e.target.value})}
                 />
             </Form.Item>
             <Form.Item
-                label="Re-Enter New password "
+                label="Nhập lại mật khẩu mới"
                 name = "phone"
-                rules={[{ required: true, message: 'Re-Enter New password'}]}
+                rules={[{ required: true, message: 'Nhập lại mật khẩu mới'}]}
             >
                 <Input
-                    placeholder="Re-Enter New password"
+                    placeholder="Nhập lại mật khẩu mới"
                     value={dataUser?.newPasswordAccept}
                     onChange= {(e)=>setdataUser({...dataUser,newPasswordAccept:e.target.value})}
                 />
             </Form.Item>
             <Form.Item style={{ paddingTop:20 }}  wrapperCol={{ span: 12, offset: 10 }}>
                 <Button type="primary" htmlType="submit" danger loading={loadingBtn}>
-                    Change Password
+                   Thay đổi mật khẩu
                 </Button>
             </Form.Item>
         </Form>
@@ -99,11 +99,11 @@ export default function ChangePassword(){
                 <div>
                     {currentUser.id==undefined ?
                     <span style={{ margin:"20px 10px" }}>
-                        Please log in to view information...
+                       Vui lòng đăng nhập để xem thông tin...
                     </span>
                     :
                     <div style={{ padding:"20px 20px" }}>
-                        Update your password
+                        Cập nhật mật khẩu của bạn
                         {InforAccount()}
                     </div>
                 

@@ -24,9 +24,9 @@ export default function HomeAdmin(){
     
     useEffect(()=>{
         let data = [ 
-            [0, 11, "Good morning !"], 
-            [12, 17, "Good afternoon !"],   
-            [18, 24, "Good evening !"],    
+            [0, 11, "Chào buổi sáng !"], 
+            [12, 17, "Chào buổi chiều !"],   
+            [18, 24, "Chào buổi tối !"],    
         ]
         let hr = new Date().getHours();
         for(var i = 0; i < data.length; i++){
@@ -58,10 +58,10 @@ export default function HomeAdmin(){
         let monthNumber = 0;
         let dayNumber = 0;
         const arrTmpColumn = [];
-        const arrTmpPie = [{type:"Processing",value:0},{type:"Delivering",value:0},
-                            {type:"Completed",value:0},{type:"Cancelled",value:0}]                  
+        const arrTmpPie = [{type:"Đang xử lý",value:0},{type:"Đang giao hàng",value:0},
+                            {type:"Hoàn thành",value:0},{type:"Đã hủy",value:0}]                  
         for(let i=0;i<12;i++){
-            arrTmpColumn.push({month:`Month ${i+1}`,value:0})
+            arrTmpColumn.push({month:`Tháng ${i+1}`,value:0})
         }
         res.map((item,index)=>{
             setValueChartPie(arrTmpPie,item);
@@ -166,17 +166,17 @@ export default function HomeAdmin(){
                         <span style={{ fontWeight:'bold',fontSize:18,marginRight:10 }}>{`${sessionTime}`}</span>
                         <Image src={logoSessionTime} width={80} preview={false}/> 
                     </div>
-                    <span>Here's a statistical overview that can help you see how your business is performing !</span>
+                    <span>Dưới đây là tổng quan thống kê có thể giúp bạn biết doanh nghiệp của mình đang hoạt động như thế nào!</span>
                 </div>
             </Col>
-            <ItemCard title="Number of orders this month" colorLeft="red" >
-                <span style={{ fontWeight:'bold' }}>{`${thisMonthNumber} order`}</span>
+            <ItemCard title="Số lượng đơn hàng trong tháng này" colorLeft="red" >
+                <span style={{ fontWeight:'bold' }}>{`${thisMonthNumber} đơn hàng`}</span>
             </ItemCard>
-            <ItemCard title="Revenue this month" colorLeft="blue" >
-                <span style={{ fontWeight:'bold' }}>{ totalMonth ? `${getPriceVND(totalMonth)} $` : '0 $'}</span>
+            <ItemCard title="Doanh thu tháng này" colorLeft="blue" >
+                <span style={{ fontWeight:'bold' }}>{ totalMonth ? `${getPriceVND(totalMonth)} $` : '0 VNĐ'}</span>
             </ItemCard>
-            <ItemCard title="Today's order quantity" colorLeft="green">
-                <span style={{ fontWeight:'bold' }}>{`${thisDayNumber} order`}</span>
+            <ItemCard title="Số lượng đặt hàng hôm nay" colorLeft="green">
+                <span style={{ fontWeight:'bold' }}>{`${thisDayNumber} đơn hàng`}</span>
             </ItemCard>
             
         </Row>
@@ -186,7 +186,7 @@ export default function HomeAdmin(){
         <Button onClick={()=>refColumn.current?.downloadImage()}><DownloadOutlined /></Button>
         <div style={{ paddingBottom:30,textAlign:'center',fontWeight:'bold' }}>
             <LeftOutlined style={{cursor:'pointer'}} onClick={()=>setthisYear(thisYear-1)}/>
-            <span style={{ marginLeft:20,marginRight:20 }}>{`Statistics on the number of orders in ${thisYear}`}</span>
+            <span style={{ marginLeft:20,marginRight:20 }}>{`Thống kê số lượng đơn hàng tại ${thisYear}`}</span>
             <RightOutlined style={{cursor:'pointer'}} onClick={()=>setthisYear(thisYear+1)}/>
         </div>
         <Column  
@@ -201,7 +201,7 @@ export default function HomeAdmin(){
         <div style={{ padding:30,boxShadow:'2px 0px 30px #00000026' }}>
         <Button onClick={()=>refPie.current?.downloadImage()}><DownloadOutlined /></Button>
         <div style={{ paddingBottom:30,textAlign:'center',fontWeight:'bold' }}>
-            <span >{`Order status`}</span>
+            <span >{`Trạng thái đơn hàng`}</span>
         </div>
         <Pie  
             {...configChartPie}   

@@ -62,7 +62,7 @@ export default function dropDownCart(props){
                     boxShadow:"2px 2px 50px #00000026"
                 }} 
             >
-                <span > There are no products in the cart </span>
+                <span >Không có sản phẩm nào trong giỏ hàng </span>
             </div>
         )
     }else{
@@ -95,12 +95,12 @@ export default function dropDownCart(props){
                 <div>
                     <Button type="primary" style={{ width:'100%',height:40 }}>
                         <Link to="/cart">
-                        View cart
+                        Xem giỏ hàng
                         </Link>
                     </Button>
                     <Button type="primary" style={{ width:'100%',margin:"10px 0px",height:40 }} danger>
                         <Link to="/payment">
-                        Payment
+                        Thanh toán
                         </Link>
                     </Button>
                 </div>

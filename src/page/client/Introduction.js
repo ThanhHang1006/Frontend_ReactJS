@@ -11,7 +11,7 @@ export default function Introduction() {
     <div style={{ marginTop: 20, marginLeft: 30 }}>
       <Breadcrumb style={{ fontSize: 18, padding: "20px 20px" }}>
         <Breadcrumb.Item>
-          <Link to={"/home"}>Home</Link>
+          <Link to={"/home"}>Trang chủ</Link>
         </Breadcrumb.Item>
         <Breadcrumb.Item>{`Introduction`}</Breadcrumb.Item>
       </Breadcrumb>
@@ -24,14 +24,14 @@ export default function Introduction() {
         }}
       >
         <span className="text">
-           Welcome to Fashion HQ - the leading destination for fashion lovers looking for unique style. Here, we proudly present a diverse collection of thousands of high-quality products, from comfortable t-shirts to fashionable jeans, bringing you a fun and unique shopping experience. To better understand us, don't miss the following article.
+        Chào mừng bạn đến với TrungAnh Shop - điểm đến hàng đầu dành cho những người yêu thời trang đang tìm kiếm phong cách độc đáo. Tại đây, chúng tôi tự hào giới thiệu bộ sưu tập đa dạng gồm hàng nghìn sản phẩm chất lượng cao, từ áo phông thoải mái đến quần jean thời trang, mang đến cho bạn trải nghiệm mua sắm thú vị và độc đáo. Để hiểu rõ hơn về chúng tôi, đừng bỏ lỡ bài viết sau đây.
         </span>
-        <h2 style={{ fontWeight: "bold" }}>OVERVIEW OF FASHION HQ</h2>
+        <h2 style={{ fontWeight: "bold" }}>TỔNG QUAN VỀ THỜI TRANG TRUNGANH SHOP</h2>
         <span className="text">
-           With the mission of creating an ideal online shopping space, we are committed to providing top quality products from reputable brands and the latest designs, reflecting modern fashion trends. High quality materials and meticulous care in every seam are our top priorities. In addition, the shopping experience at Fashion HQ is not only about product selection but also a journey to discover your personal style. We always keep up to date with the latest fashion trends and provide outfit coordination suggestions so you can create your own, unique style.
+        Với sứ mệnh tạo ra một không gian mua sắm trực tuyến lý tưởng, chúng tôi cam kết cung cấp những sản phẩm chất lượng hàng đầu đến từ thương hiệu uy tín và những thiết kế mới nhất, phản ánh xu hướng thời trang hiện đại. Chất liệu cao cấp và sự chăm chút tỉ mỉ trong từng đường may là ưu tiên hàng đầu của chúng tôi. Ngoài ra, trải nghiệm mua sắm tại TrungAnh Shop không chỉ là lựa chọn sản phẩm mà còn là hành trình khám phá phong cách cá nhân của bạn. Chúng tôi luôn cập nhật những xu hướng thời trang mới nhất và đưa ra những gợi ý phối hợp trang phục để bạn có thể tạo nên phong cách riêng, độc đáo cho riêng mình.
         </span>
         <span className="text">
-          Join us on a fashion journey filled with style and confidence. Whether you are a fashion enthusiast or looking for everyday outfits, Fashion HQ is the ideal place to satisfy your passion. Discover now and make your fashion dreams come true !
+        Hãy tham gia cùng chúng tôi trên hành trình thời trang đầy phong cách và tự tin. Dù bạn là người đam mê thời trang hay đang tìm kiếm những bộ trang phục thường ngày, TrungAnh Shop chính là nơi lý tưởng để thỏa mãn niềm đam mê của bạn. Khám phá ngay bây giờ và biến giấc mơ thời trang của bạn thành hiện thực!
         </span>
         <div
           style={{ display: "flex", alignItems: "center", marginBottom: 10 }}
@@ -44,83 +44,83 @@ export default function Introduction() {
             alt="logo"
           />
           <span className="title-logo" style={{ fontSize: 20, marginLeft: 10 }}>
-            FASHION HQ
+            TrungAnh Shop
           </span>
         </div>
         <span className="text" style={{ fontWeight: "bold" }}>
-          To meet the growing needs of customers, Fashion HQ has been selling the following products:
+        Để đáp ứng nhu cầu ngày càng cao của khách hàng, TrungAnh Shop đã và đang bán các sản phẩm sau:
         </span>
         <div style={{ marginLeft: 10 }}>
-          <span className="text">- &nbsp;<Link to="/category/1">Shirt</Link></span>
-          <span className="text">- &nbsp;<Link to="/category/2">Trousers</Link></span>
-          <span className="text">- &nbsp;<Link to="/category/3">Shoe</Link></span>
-          <span className="text">- &nbsp;<Link to="/category/4">Accessory</Link></span>
+          <span className="text">- &nbsp;<Link to="/category/1">Áo</Link></span>
+          <span className="text">- &nbsp;<Link to="/category/2">Quần</Link></span>
+          <span className="text">- &nbsp;<Link to="/category/3">Giày</Link></span>
+          <span className="text">- &nbsp;<Link to="/category/4">Mặt hàng khác</Link></span>
         </div>
-        <h2 style={{ fontWeight: "bold" }}>CHOOSE FASHION HQ</h2>
+        <h2 style={{ fontWeight: "bold" }}>Chọn TrungAnh Shop</h2>
         <div style={{ marginTop: 20, marginBottom: 20 }}>
           <Row gutter={16}>
             <Col span={6}>
               <Card
-                title={ <span><CarTwoTone style={{ fontSize: 20 }} /> Nationwide Delivery</span>}
+                title={ <span><CarTwoTone style={{ fontSize: 20 }} /> Giao hàng toàn quốc</span>}
                 bordered={false}
               >
-               Extremely fast delivery with many attractive shipping support incentive.
+               Giao hàng cực nhanh cùng nhiều ưu đãi hỗ trợ vận chuyển hấp dẫn.
               </Card>
             </Col>
             <Col span={6}>
               <Card
-                title={<span><ShoppingTwoTone style={{ fontSize: 20 }} /> Diverse products</span>}
+                title={<span><ShoppingTwoTone style={{ fontSize: 20 }} /> Sản phẩm đa dạng</span>}
                 bordered={false}
               >
-               Shirts, pants, and accessories of all kinds are always waiting for you.
-              </Card>
-            </Col>
-            <Col span={6}>
-              <Card
-                title={
-                  <span>
-                    <LikeTwoTone style={{ fontSize: 20 }} /> Utilities
-                  </span>
-                }
-                bordered={false}
-              >
-               You can place orders and track your orders anytime, anywhere.
+              Áo sơ mi, quần dài và các loại phụ kiện luôn chờ đợi bạn.
               </Card>
             </Col>
             <Col span={6}>
               <Card
                 title={
                   <span>
-                    <MobileTwoTone style={{ fontSize: 20 }} /> Supports purchases on multiple platforms
+                    <LikeTwoTone style={{ fontSize: 20 }} /> Tiện ích
                   </span>
                 }
                 bordered={false}
               >
-              You can make purchases on the website and mobile application.
+              Bạn có thể đặt hàng và theo dõi đơn hàng mọi lúc, mọi nơi.
+              </Card>
+            </Col>
+            <Col span={6}>
+              <Card
+                title={
+                  <span>
+                    <MobileTwoTone style={{ fontSize: 20 }} />Hỗ trợ mua hàng trên nhiều nền tảng
+                  </span>
+                }
+                bordered={false}
+              >
+            Bạn có thể mua hàng trên trang web và ứng dụng di động.
               </Card>
             </Col>
           </Row>
         </div>
         <span className="text" style={{ fontWeight: "bold" }}>
-        Fashion HQ would like to commit to customers:
+        TrungAnh Shop xin cam kết với khách hàng:
         </span>
         <div style={{ marginLeft: 10 }}>
-          <span className="text">- &nbsp;The product meets quality standards.</span>
+          <span className="text">- &nbsp;Sản phẩm đạt tiêu chuẩn chất lượng.</span>
           <span className="text">
-            - &nbsp;Our customer care team is ready to support you 24/7.
+            - &nbsp;Đội ngũ chăm sóc khách hàng của chúng tôi sẵn sàng hỗ trợ bạn 24/7.
           </span>
           <span className="text">
-            - &nbsp;Your product will be carefully packaged and shipped safely to your address.
+            - &nbsp;Sản phẩm của bạn sẽ được đóng gói cẩn thận và vận chuyển an toàn đến địa chỉ của bạn.
           </span>
           <span className="text">
-            - &nbsp;Your personal information will be kept secure and never shared with third parties.
+            - &nbsp;Thông tin cá nhân của bạn sẽ được bảo mật và không bao giờ chia sẻ với bên thứ ba.
           </span>
           <span className="text">
-            - &nbsp;You have the right to exchange or return goods within 7 days from the date of receipt.
+            - &nbsp;Bạn có quyền đổi hoặc trả hàng trong vòng 7 ngày kể từ ngày nhận hàng.
           </span>
         </div>
         <span className="text" style={{ marginTop: 20 }}>
-          We want you to have an enjoyable and satisfying shopping experience at Fashion HQ. Thank you for trusting and supporting us!
+        Chúng tôi mong muốn bạn có trải nghiệm mua sắm thú vị và hài lòng tại TrungAnh Shop. Cảm ơn bạn đã tin tưởng và ủng hộ chúng tôi!
         </span>
       </div>
     </div>
